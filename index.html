@@ -21,10 +21,56 @@
               <p id="loginError" class="error-msg"></p>
 
                 <button onclick="login()">Login</button>
+
+                    <p style="margin-top:15px;text-align:center;">
+                     Don't have an account?
+                    <a href="#" onclick="showPage('registerPage')">
+                    Register
+    </a>
+</p>
+
+<p id="loginError" class="error-msg"></p>
             </div>
         </div>
     </section>
 
+       <!-- REGISTER PAGE -->
+<section id="registerPage" class="page">
+
+    <div class="container">
+        <div class="card">
+
+            <h2>Create Account</h2>
+
+            <input
+                type="email"
+                id="regEmail"
+                placeholder="Email"
+            >
+
+            <input
+                type="password"
+                id="regPassword"
+                placeholder="Password"
+            >
+
+            <p id="regError" class="error-msg"></p>
+
+            <button onclick="register()">
+                Register
+            </button>
+
+            <p style="margin-top:15px;text-align:center;">
+                Already have an account?
+                <a href="#" onclick="showPage('loginPage')">
+                    Login
+                </a>
+            </p>
+
+        </div>
+    </div>
+
+</section>
     <!-- HOME PAGE -->
     <section id="homePage" class="page">
         <div class="container">
@@ -130,8 +176,9 @@
             <div class="card">
     <h2>Profile</h2>
 
-    <p><strong>Name:</strong> John Doe</p>
-    <p><strong>Email:</strong> john@example.com</p>
+          <p><strong>Email:</strong>
+            <span id="profileEmail"></span>
+</p>
 
     <br>
 
