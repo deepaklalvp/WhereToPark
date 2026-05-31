@@ -1,3 +1,5 @@
+const db = firebase.firestore();
+
 let selectedParking = {};
 
 const parkingAreas = [
@@ -50,7 +52,7 @@ function register() {
         return;
     }
 
-    firebase.auth()
+firebase.auth()
         .createUserWithEmailAndPassword(email, password)
         .then(() => {
 
@@ -233,3 +235,13 @@ function loadOrders() {
       });
 }
 
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    match /bookings/{bookingId} {
+      allow read, write: if request.auth != null;
+    }
+  }
+}
