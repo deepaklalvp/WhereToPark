@@ -225,15 +225,20 @@ function confirmBooking() {
       });
 }
 
+let currentTab = "upcoming";
+function setTab(tab) {
+    currentTab = tab;
+    loadOrders();
+}
+
+
 let unsubscribeOrders = null;
 
 function loadOrders() {
 
     const user = firebase.auth().currentUser;
-
     if (!user) return;
 
-    // 🔥 stop previous listener (important)
     if (unsubscribeOrders) {
         unsubscribeOrders();
     }
@@ -243,29 +248,40 @@ function loadOrders() {
 
     unsubscribeOrders = query.onSnapshot((snapshot) => {
 
-        let html = "";
+        let upcoming = "";
+        let completed = "";
+
+        const now = new Date(); // current time
 
         snapshot.forEach((doc) => {
 
-            const booking = doc.data();
+            const b = doc.data();
 
-            html += `
+            // 🔥 combine date + time into real JS Date
+            const bookingDateTime = new Date(`${b.date} ${b.time}`);
+
+            const html = `
                 <div class="card">
-                    <h3>${booking.area}</h3>
-                    <p>${booking.location}</p>
-                    <p>${booking.date}</p>
-                    <p>${booking.time}</p>
-                    <p>${booking.price}</p>
+                    <h3>${b.area}</h3>
+                    <p>${b.location}</p>
+                    <p>${b.date} - ${b.time}</p>
+                    <p>${b.price}</p>
                 </div>
             `;
+
+            if (bookingDateTime >= now) {
+                upcoming += html;
+            } else {
+                completed += html;
+            }
         });
 
-        if (!html) {
-            html = "No bookings yet.";
+        if (currentTab === "upcoming") {
+            document.getElementById("orderHistory").innerHTML =
+                upcoming || "No upcoming bookings";
+        } else {
+            document.getElementById("orderHistory").innerHTML =
+                completed || "No completed bookings";
         }
-
-        document.getElementById("orderHistory").innerHTML = html;
     });
 }
-
-
