@@ -15,10 +15,12 @@
             <div class="card">
                 <h2>Login</h2>
 
-                <input type="email" placeholder="Email">
-                <input type="password" placeholder="Password">
+              <input type="email" id="email" placeholder="Email">
+              <input type="password" id="password" placeholder="Password">
 
-                <button onclick="showPage('homePage')">Login</button>
+              <p id="loginError" class="error-msg"></p>
+
+                <button onclick="login()">Login</button>
             </div>
         </div>
     </section>
@@ -152,10 +154,13 @@
 <script>
   // Your Firebase config (replace this later)
   const firebaseConfig = {
-    apiKey: "AIzaSyC8bbz74PfSf_us5x37o6wdkvbnA7cx1EY",
-    authDomain: "wheretopark-36515.firebaseapp.com",
-    projectId: "wheretopark-36515",
-    appId: "1:315424270234:web:1ce05f4ebe8a003e5bbc23"
+  apiKey: "AIzaSyC8bbz74PfSf_us5x37o6wdkvbnA7cx1EY",
+  authDomain: "wheretopark-36515.firebaseapp.com",
+  projectId: "wheretopark-36515",
+  storageBucket: "wheretopark-36515.firebasestorage.app",
+  messagingSenderId: "315424270234",
+  appId: "1:315424270234:web:1ce05f4ebe8a003e5bbc23",
+  measurementId: "G-BLT27VBS0M"
   };
 
   firebase.initializeApp(firebaseConfig);
