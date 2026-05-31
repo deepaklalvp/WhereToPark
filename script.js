@@ -219,7 +219,10 @@ function confirmBooking() {
             `;
 
           showPage("confirmationPage");
-
+            setTimeout(() => {
+                loadOrders();
+            }, 300);
+          
       })
       .catch((error) => {
           alert(error.message);
