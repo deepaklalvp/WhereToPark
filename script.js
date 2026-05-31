@@ -106,26 +106,7 @@ function logout() {
 
         });
 }
-firebase.auth().onAuthStateChanged((user) => {
-
-    if(user){
-
-        const profileEmail =
-            document.getElementById("profileEmail");
-
-        if(profileEmail){
-            profileEmail.textContent = user.email;
-        }
-
-        loadOrders();
-
-        showPage("homePage");
-
-    } else {
-
-        showPage("loginPage");
-    }
-});
+ 
 window.addEventListener("DOMContentLoaded", () => {
 
     const dateInput = document.getElementById("date");
@@ -151,10 +132,7 @@ function showPage(pageId) {
         page.classList.add("active");
     }
 
-    // 🔥 important fix
-    if(pageId === "ordersPage"){
-        loadOrders();
-    }
+ 
 }
 
 function loadParking() {
@@ -181,25 +159,31 @@ function loadParking() {
 
 function selectParking(name, price) {
 
+    const startTime = document.getElementById("startTime").value;
+    const duration = document.getElementById("duration").value;
+
     selectedParking = {
         area: name,
         price: price,
         location: document.getElementById("location").value,
         date: document.getElementById("date").value,
-        time: document.getElementById("time").value
+
+        // ✅ NEW FIELDS
+        startTime: startTime,
+        duration: duration
     };
 
     document.getElementById("detailsContent").innerHTML = `
         <strong>Parking Area:</strong> ${selectedParking.area}<br>
         <strong>Location:</strong> ${selectedParking.location}<br>
         <strong>Date:</strong> ${selectedParking.date}<br>
-        <strong>Time:</strong> ${selectedParking.time}<br>
+        <strong>Start Time:</strong> ${selectedParking.startTime}<br>
+        <strong>Duration:</strong> ${selectedParking.duration} hours<br>
         <strong>Price:</strong> ${selectedParking.price}
     `;
 
     showPage("detailsPage");
 }
-
 function confirmBooking() {
 
     const user = firebase.auth().currentUser;
@@ -210,24 +194,29 @@ function confirmBooking() {
     }
 
     db.collection("bookings")
-      .add({
-          userEmail: user.email,
-          area: selectedParking.area,
-          location: selectedParking.location,
-          date: selectedParking.date,
-          time: selectedParking.time,
-          price: selectedParking.price,
-          createdAt: firebase.firestore.FieldValue.serverTimestamp()
-      })
+  .add({
+      userEmail: user.email,
+      area: selectedParking.area,
+      location: selectedParking.location,
+      date: selectedParking.date,
+
+      // ✅ NEW STRUCTURE
+      startTime: selectedParking.startTime,
+      duration: selectedParking.duration,
+
+      price: selectedParking.price,
+      createdAt: firebase.firestore.FieldValue.serverTimestamp()
+  })
       .then(() => {
 
           document.getElementById("confirmationContent").innerHTML = `
-              <strong>Parking Area:</strong> ${selectedParking.area}<br>
-              <strong>Location:</strong> ${selectedParking.location}<br>
-              <strong>Date:</strong> ${selectedParking.date}<br>
-              <strong>Time:</strong> ${selectedParking.time}<br>
-              <strong>Price:</strong> ${selectedParking.price}
-          `;
+                <strong>Parking Area:</strong> ${selectedParking.area}<br>
+                <strong>Location:</strong> ${selectedParking.location}<br>
+                <strong>Date:</strong> ${selectedParking.date}<br>
+                <strong>Start Time:</strong> ${selectedParking.startTime}<br>
+                <strong>Duration:</strong> ${selectedParking.duration} hours<br>
+                <strong>Price:</strong> ${selectedParking.price}
+            `;
 
           showPage("confirmationPage");
 
@@ -280,13 +269,13 @@ function loadOrders() {
             const b = doc.data();
 
             // 🔥 combine date + time into real JS Date
-            const bookingDateTime = new Date(`${b.date} ${b.time}`);
+            const bookingDateTime = new Date(`${b.date}T${b.startTime}`);
 
             const html = `
                 <div class="card">
                     <h3>${b.area}</h3>
                     <p>${b.location}</p>
-                    <p>${b.date} - ${b.time}</p>
+                    <p>${b.date} - ${b.startTime} (${b.duration} hrs)</p>
                     <p>${b.price}</p>
                 </div>
             `;
