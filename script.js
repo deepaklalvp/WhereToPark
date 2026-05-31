@@ -35,37 +35,60 @@ function login() {
 
 function register() {
 
-    let email = document.getElementById("regEmail").value;
-    let password = document.getElementById("regPassword").value;
+    const email =
+        document.getElementById("regEmail").value;
 
-    firebase.auth().createUserWithEmailAndPassword(email, password)
+    const password =
+        document.getElementById("regPassword").value;
+
+    firebase.auth()
+        .createUserWithEmailAndPassword(
+            email,
+            password
+        )
         .then(() => {
 
             alert("Registration successful!");
+
             showPage("loginPage");
 
         })
         .catch((error) => {
 
-            document.getElementById("regError").innerHTML =
-                error.message;
+            document.getElementById("regError")
+                .innerHTML = error.message;
         });
 }
 
 function logout() {
 
-    firebase.auth().signOut().then(() => {
-        showPage("loginPage");
-    });
+    firebase.auth()
+        .signOut()
+        .then(() => {
+
+            showPage("loginPage");
+
+        });
 }
 firebase.auth().onAuthStateChanged((user) => {
 
     if(user){
+
+        const profileEmail =
+            document.getElementById("profileEmail");
+
+        if(profileEmail){
+            profileEmail.textContent = user.email;
+        }
+
         showPage("homePage");
+
     } else {
+
         showPage("loginPage");
     }
 });
+
 function showPage(pageId) {
 
     document
