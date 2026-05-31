@@ -159,26 +159,26 @@ function loadParking() {
 
 function selectParking(name, price) {
 
-    const startTime = document.getElementById("startTime").value;
-    const duration = document.getElementById("duration").value;
+    const location = document.getElementById("location")?.value || "";
+    const date = document.getElementById("date")?.value || "";
+    const startTime = document.getElementById("startTime")?.value || "";
+    const duration = document.getElementById("duration")?.value || "";
 
     selectedParking = {
         area: name,
         price: price,
-        location: document.getElementById("location").value,
-        date: document.getElementById("date").value,
-
-        // ✅ NEW FIELDS
-        startTime: startTime,
-        duration: duration
+        location,
+        date,
+        startTime,
+        duration
     };
 
     document.getElementById("detailsContent").innerHTML = `
         <strong>Parking Area:</strong> ${selectedParking.area}<br>
-        <strong>Location:</strong> ${selectedParking.location}<br>
-        <strong>Date:</strong> ${selectedParking.date}<br>
-        <strong>Start Time:</strong> ${selectedParking.startTime}<br>
-        <strong>Duration:</strong> ${selectedParking.duration} hours<br>
+        <strong>Location:</strong> ${selectedParking.location || "Not selected"}<br>
+        <strong>Date:</strong> ${selectedParking.date || "Not selected"}<br>
+        <strong>Start Time:</strong> ${selectedParking.startTime || "Not selected"}<br>
+        <strong>Duration:</strong> ${selectedParking.duration || "Not selected"} hours<br>
         <strong>Price:</strong> ${selectedParking.price}
     `;
 
