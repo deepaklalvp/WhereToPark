@@ -307,3 +307,54 @@ function loadOrders() {
         }
     });
 }
+function generateTimeSlots() {
+
+    const startTime = document.getElementById("startTime");
+
+    let times = [];
+
+    for (let h = 0; h < 24; h++) {
+        for (let m of [0, 15, 30, 45]) {
+
+            const hh = String(h).padStart(2, "0");
+            const mm = String(m).padStart(2, "0");
+
+            times.push(`${hh}:${mm}`);
+        }
+    }
+
+    startTime.innerHTML = "";
+
+    times.forEach(t => {
+        startTime.innerHTML += `<option value="${t}">${t}</option>`;
+    });
+}
+
+function updateEndTime() {
+
+    const start = document.getElementById("startTime").value;
+    const duration = parseInt(document.getElementById("duration").value);
+
+    if (!start) return;
+
+    const [h, m] = start.split(":").map(Number);
+
+    const startDate = new Date();
+    startDate.setHours(h, m, 0, 0);
+
+    const endDate = new Date(startDate.getTime() + duration * 60 * 60 * 1000);
+
+    const endH = String(endDate.getHours()).padStart(2, "0");
+    const endM = String(endDate.getMinutes()).padStart(2, "0");
+
+    document.getElementById("endTimePreview").innerText =
+        `Ends at: ${endH}:${endM}`;
+}
+
+window.addEventListener("DOMContentLoaded", () => {
+
+    generateTimeSlots();
+
+    document.getElementById("startTime").addEventListener("change", updateEndTime);
+    document.getElementById("duration").addEventListener("change", updateEndTime);
+});
