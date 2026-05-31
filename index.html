@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parking Booking App</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- LOGIN PAGE -->
+    <section id="loginPage" class="page active">
+        <div class="container">
+            <div class="card">
+                <h2>Login</h2>
+
+                <input type="email" placeholder="Email">
+                <input type="password" placeholder="Password">
+
+                <button onclick="showPage('homePage')">Login</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOME PAGE -->
+    <section id="homePage" class="page">
+        <div class="container">
+
+            <div class="card">
+                <h2>Find Parking</h2>
+
+                <select id="location">
+                    <option>New York</option>
+                    <option>London</option>
+                    <option>Dubai</option>
+                    <option>Mumbai</option>
+                </select>
+
+                <input type="date" id="date">
+                <input type="time" id="time">
+
+                <button onclick="loadParking()">Search Parking</button>
+            </div>
+
+            <div id="parkingList"></div>
+
+        </div>
+
+        <div class="bottom-nav">
+            <button onclick="showPage('homePage')">Home</button>
+            <button onclick="showPage('ordersPage')">My Orders</button>
+            <button onclick="showPage('profilePage')">Profile</button>
+        </div>
+    </section>
+
+    <!-- PARKING DETAILS PAGE -->
+    <section id="detailsPage" class="page">
+        <div class="container">
+            <div class="card">
+                <h2>Parking Details</h2>
+
+                <div id="detailsContent"></div>
+
+                <button onclick="showPage('paymentPage')">
+                    Book Now
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- PAYMENT PAGE -->
+    <section id="paymentPage" class="page">
+        <div class="container">
+            <div class="card">
+                <h2>Payment</h2>
+
+                <input type="text" placeholder="Card Holder Name">
+                <input type="text" placeholder="Card Number">
+                <input type="text" placeholder="CVV">
+
+                <button onclick="confirmBooking()">
+                    Pay Now
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONFIRMATION PAGE -->
+    <section id="confirmationPage" class="page">
+        <div class="container">
+            <div class="card">
+
+                <h2>Booking Confirmed</h2>
+
+                <div id="confirmationContent"></div>
+
+                <button onclick="showPage('homePage')">
+                    Back To Home
+                </button>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- MY ORDERS -->
+    <section id="ordersPage" class="page">
+        <div class="container">
+            <div class="card">
+                <h2>My Orders</h2>
+
+                <div id="orderHistory">
+                    No bookings yet.
+                </div>
+            </div>
+        </div>
+
+        <div class="bottom-nav">
+            <button onclick="showPage('homePage')">Home</button>
+            <button>My Orders</button>
+            <button onclick="showPage('profilePage')">Profile</button>
+        </div>
+    </section>
+
+    <!-- PROFILE -->
+    <section id="profilePage" class="page">
+        <div class="container">
+            <div class="card">
+                <h2>Profile</h2>
+
+                <p>Name: John Doe</p>
+                <p>Email: john@example.com</p>
+            </div>
+        </div>
+
+        <div class="bottom-nav">
+            <button onclick="showPage('homePage')">Home</button>
+            <button onclick="showPage('ordersPage')">My Orders</button>
+            <button>Profile</button>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

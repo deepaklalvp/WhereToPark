@@ -1,0 +1,93 @@
+let selectedParking = {};
+
+const parkingAreas = [
+    {
+        name: "Central Parking",
+        price: "$10"
+    },
+    {
+        name: "Mall Parking",
+        price: "$15"
+    },
+    {
+        name: "Airport Parking",
+        price: "$20"
+    }
+];
+
+function showPage(pageId) {
+
+    document
+        .querySelectorAll(".page")
+        .forEach(page => page.classList.remove("active"));
+
+    document
+        .getElementById(pageId)
+        .classList.add("active");
+}
+
+function loadParking() {
+
+    const parkingList =
+        document.getElementById("parkingList");
+
+    parkingList.innerHTML = "";
+
+    parkingAreas.forEach(area => {
+
+        parkingList.innerHTML += `
+        <div class="parking-item card">
+            <h3>${area.name}</h3>
+            <p>Price: ${area.price}</p>
+
+            <button onclick="selectParking('${area.name}','${area.price}')">
+                View Details
+            </button>
+        </div>
+        `;
+    });
+}
+
+function selectParking(name, price) {
+
+    selectedParking = {
+        area: name,
+        price: price,
+        location: document.getElementById("location").value,
+        date: document.getElementById("date").value,
+        time: document.getElementById("time").value
+    };
+
+    document.getElementById("detailsContent").innerHTML = `
+        <strong>Parking Area:</strong> ${selectedParking.area}<br>
+        <strong>Location:</strong> ${selectedParking.location}<br>
+        <strong>Date:</strong> ${selectedParking.date}<br>
+        <strong>Time:</strong> ${selectedParking.time}<br>
+        <strong>Price:</strong> ${selectedParking.price}
+    `;
+
+    showPage("detailsPage");
+}
+
+function confirmBooking() {
+
+    document.getElementById("confirmationContent").innerHTML = `
+        <strong>Parking Area:</strong> ${selectedParking.area}<br>
+        <strong>Location:</strong> ${selectedParking.location}<br>
+        <strong>Date:</strong> ${selectedParking.date}<br>
+        <strong>Time:</strong> ${selectedParking.time}<br>
+        <strong>Price:</strong> ${selectedParking.price}
+    `;
+
+    document.getElementById("orderHistory").innerHTML = `
+        <div class="card">
+            <h3>${selectedParking.area}</h3>
+            <p>${selectedParking.location}</p>
+            <p>${selectedParking.date}</p>
+            <p>${selectedParking.time}</p>
+            <p>${selectedParking.price}</p>
+        </div>
+    `;
+
+    showPage("confirmationPage");
+}
