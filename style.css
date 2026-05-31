@@ -92,3 +92,10 @@ button:hover{
     line-height:2;
     margin-bottom:20px;
 }
+.logout-btn{
+    background:#dc3545;
+}
+
+.logout-btn:hover{
+    background:#b02a37;
+}
