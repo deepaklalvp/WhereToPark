@@ -99,3 +99,28 @@ button:hover{
 .logout-btn:hover{
     background:#b02a37;
 }
+
+.tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+/* default tab */
+.tab {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    background: #e0e0e0;
+    color: #333;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+/* active tab (dark) */
+.tab.active {
+    background: #222;
+    color: #fff;
+}
