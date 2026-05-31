@@ -15,6 +15,57 @@ const parkingAreas = [
     }
 ];
 
+function login() {
+
+    let email = document.getElementById("email").value;
+    let password = document.getElementById("password").value;
+
+    firebase.auth().signInWithEmailAndPassword(email, password)
+        .then((userCredential) => {
+
+            showPage("homePage");
+
+        })
+        .catch((error) => {
+
+            document.getElementById("loginError").innerHTML =
+                error.message;
+        });
+}
+
+function register() {
+
+    let email = document.getElementById("regEmail").value;
+    let password = document.getElementById("regPassword").value;
+
+    firebase.auth().createUserWithEmailAndPassword(email, password)
+        .then(() => {
+
+            alert("Registration successful!");
+            showPage("loginPage");
+
+        })
+        .catch((error) => {
+
+            document.getElementById("regError").innerHTML =
+                error.message;
+        });
+}
+
+function logout() {
+
+    firebase.auth().signOut().then(() => {
+        showPage("loginPage");
+    });
+}
+firebase.auth().onAuthStateChanged((user) => {
+
+    if(user){
+        showPage("homePage");
+    } else {
+        showPage("loginPage");
+    }
+});
 function showPage(pageId) {
 
     document
@@ -91,11 +142,4 @@ function confirmBooking() {
 
     showPage("confirmationPage");
 }
-function logout() {
 
-    // Optional: clear saved data
-    localStorage.clear();
-
-    // Return to login page
-    showPage("loginPage");
-}
