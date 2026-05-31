@@ -226,8 +226,18 @@ function confirmBooking() {
 }
 
 let currentTab = "upcoming";
+
 function setTab(tab) {
+
     currentTab = tab;
+
+    // reset all tabs
+    document.getElementById("upcomingTab").classList.remove("active");
+    document.getElementById("completedTab").classList.remove("active");
+
+    // set active
+    document.getElementById(tab + "Tab").classList.add("active");
+
     loadOrders();
 }
 
