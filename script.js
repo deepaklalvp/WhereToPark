@@ -93,6 +93,8 @@ firebase.auth().onAuthStateChanged((user) => {
             profileEmail.textContent = user.email;
         }
 
+        loadOrders();
+
         showPage("homePage");
 
     } else {
@@ -160,24 +162,74 @@ function selectParking(name, price) {
 
 function confirmBooking() {
 
-    document.getElementById("confirmationContent").innerHTML = `
-        <strong>Parking Area:</strong> ${selectedParking.area}<br>
-        <strong>Location:</strong> ${selectedParking.location}<br>
-        <strong>Date:</strong> ${selectedParking.date}<br>
-        <strong>Time:</strong> ${selectedParking.time}<br>
-        <strong>Price:</strong> ${selectedParking.price}
-    `;
+    const user = firebase.auth().currentUser;
 
-    document.getElementById("orderHistory").innerHTML = `
-        <div class="card">
-            <h3>${selectedParking.area}</h3>
-            <p>${selectedParking.location}</p>
-            <p>${selectedParking.date}</p>
-            <p>${selectedParking.time}</p>
-            <p>${selectedParking.price}</p>
-        </div>
-    `;
+    if(!user){
+        alert("Please login first");
+        return;
+    }
 
-    showPage("confirmationPage");
+    db.collection("bookings")
+      .add({
+          userEmail: user.email,
+          area: selectedParking.area,
+          location: selectedParking.location,
+          date: selectedParking.date,
+          time: selectedParking.time,
+          price: selectedParking.price,
+          createdAt: firebase.firestore.FieldValue.serverTimestamp()
+      })
+      .then(() => {
+
+          document.getElementById("confirmationContent").innerHTML = `
+              <strong>Parking Area:</strong> ${selectedParking.area}<br>
+              <strong>Location:</strong> ${selectedParking.location}<br>
+              <strong>Date:</strong> ${selectedParking.date}<br>
+              <strong>Time:</strong> ${selectedParking.time}<br>
+              <strong>Price:</strong> ${selectedParking.price}
+          `;
+
+          showPage("confirmationPage");
+
+      })
+      .catch((error) => {
+          alert(error.message);
+      });
+}
+
+function loadOrders() {
+
+    const user = firebase.auth().currentUser;
+
+    if(!user) return;
+
+    db.collection("bookings")
+      .where("userEmail", "==", user.email)
+      .get()
+      .then((snapshot) => {
+
+          let html = "";
+
+          snapshot.forEach((doc) => {
+
+              const booking = doc.data();
+
+              html += `
+              <div class="card">
+                  <h3>${booking.area}</h3>
+                  <p>${booking.location}</p>
+                  <p>${booking.date}</p>
+                  <p>${booking.time}</p>
+                  <p>${booking.price}</p>
+              </div>
+              `;
+          });
+
+          if(html === ""){
+              html = "No bookings yet.";
+          }
+
+          document.getElementById("orderHistory").innerHTML = html;
+      });
 }
 
