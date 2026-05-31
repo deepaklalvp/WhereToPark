@@ -165,7 +165,7 @@ function loadParking() {
                         <p>₹${p.pricePerHour}/hour</p>
                         <p>Total: ₹${totalPrice}</p>
                         <button onclick="selectParking('${doc.id}', '${p.name}', ${totalPrice})">
-                            View Details
+                            Book Now
                         </button>
                     </div>
                 `;
