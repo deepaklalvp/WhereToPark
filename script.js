@@ -126,7 +126,19 @@ firebase.auth().onAuthStateChanged((user) => {
         showPage("loginPage");
     }
 });
+window.addEventListener("DOMContentLoaded", () => {
 
+    const dateInput = document.getElementById("date");
+
+    const today = new Date();
+    const yyyy = today.getFullYear();
+    const mm = String(today.getMonth() + 1).padStart(2, "0");
+    const dd = String(today.getDate()).padStart(2, "0");
+
+    const minDate = `${yyyy}-${mm}-${dd}`;
+
+    dateInput.min = minDate;
+});
 function showPage(pageId) {
 
     document
