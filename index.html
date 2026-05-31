@@ -156,9 +156,19 @@
             <div class="card">
                 <h2>My Orders</h2>
 
-                <div id="orderHistory">
-                    No bookings yet.
-                </div>
+              <div class="tabs">
+    <button onclick="setTab('upcoming')" id="upcomingTab">
+        Upcoming
+    </button>
+
+    <button onclick="setTab('completed')" id="completedTab">
+        Completed
+    </button>
+</div>
+
+<div id="orderHistory">
+    No bookings yet.
+</div>
             </div>
         </div>
 
