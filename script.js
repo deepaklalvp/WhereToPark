@@ -122,15 +122,14 @@ function showPage(pageId) {
 }
 
 function loadParking() {
-const district =
-    document.getElementById("location").value;
 
-if (!district) {
-    alert("Please select a district");
-    return;
-}
     const district =
         document.getElementById("location").value;
+
+    if (!district) {
+        alert("Please select a district");
+        return;
+    }
 
     const duration =
         Number(document.getElementById("duration").value);
@@ -147,14 +146,13 @@ if (!district) {
 
             parkingList.innerHTML = "";
 
-            if(snapshot.empty){
+            if (snapshot.empty) {
                 parkingList.innerHTML =
                     "No parking available";
                 return;
             }
 
             snapshot.forEach((doc) => {
-
                 const p = doc.data();
 
                 const totalPrice =
@@ -163,27 +161,10 @@ if (!district) {
                 parkingList.innerHTML += `
                     <div class="card">
                         <h3>${p.name}</h3>
-
-                        <p>
-                            Available Slots:
-                            ${p.availableSlots}
-                        </p>
-
-                        <p>
-                            ₹${p.pricePerHour}/hour
-                        </p>
-
-                        <p>
-                            Total:
-                            ₹${totalPrice}
-                        </p>
-
-                        <button
-                            onclick="selectParking(
-                            '${doc.id}',
-                            \`${p.name}\`,
-                            ${totalPrice}
-)"
+                        <p>Available Slots: ${p.availableSlots}</p>
+                        <p>₹${p.pricePerHour}/hour</p>
+                        <p>Total: ₹${totalPrice}</p>
+                        <button onclick="selectParking('${doc.id}', '${p.name}', ${totalPrice})">
                             View Details
                         </button>
                     </div>
