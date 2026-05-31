@@ -17,35 +17,41 @@ const parkingAreas = [
 
 function login() {
 
-    let email = document.getElementById("email").value;
-    let password = document.getElementById("password").value;
+    let email = document.getElementById("email").value.trim();
+    let password = document.getElementById("password").value.trim();
 
-    firebase.auth().signInWithEmailAndPassword(email, password)
-        .then((userCredential) => {
+    if(!email || !password){
+        document.getElementById("loginError").innerHTML =
+            "Please enter email and password";
+        return;
+    }
 
+    firebase.auth()
+        .signInWithEmailAndPassword(email, password)
+        .then(() => {
             showPage("homePage");
-
         })
         .catch((error) => {
-
             document.getElementById("loginError").innerHTML =
                 error.message;
         });
 }
-
 function register() {
 
     const email =
-        document.getElementById("regEmail").value;
+        document.getElementById("regEmail").value.trim();
 
     const password =
-        document.getElementById("regPassword").value;
+        document.getElementById("regPassword").value.trim();
+
+    if(!email || !password){
+        document.getElementById("regError").innerHTML =
+            "Please enter email and password";
+        return;
+    }
 
     firebase.auth()
-        .createUserWithEmailAndPassword(
-            email,
-            password
-        )
+        .createUserWithEmailAndPassword(email, password)
         .then(() => {
 
             alert("Registration successful!");
@@ -59,12 +65,18 @@ function register() {
                 .innerHTML = error.message;
         });
 }
-
 function logout() {
 
     firebase.auth()
         .signOut()
         .then(() => {
+
+            const profileEmail =
+                document.getElementById("profileEmail");
+
+            if(profileEmail){
+                profileEmail.textContent = "";
+            }
 
             showPage("loginPage");
 
@@ -95,9 +107,12 @@ function showPage(pageId) {
         .querySelectorAll(".page")
         .forEach(page => page.classList.remove("active"));
 
-    document
-        .getElementById(pageId)
-        .classList.add("active");
+    const page =
+        document.getElementById(pageId);
+
+    if(page){
+        page.classList.add("active");
+    }
 }
 
 function loadParking() {
