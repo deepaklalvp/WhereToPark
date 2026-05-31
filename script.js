@@ -1,5 +1,3 @@
-const db = firebase.firestore();
-
 let selectedParking = {};
 
 const parkingAreas = [
@@ -52,20 +50,26 @@ function register() {
         return;
     }
 
-firebase.auth()
-        .createUserWithEmailAndPassword(email, password)
-        .then(() => {
+firebase.auth().onAuthStateChanged((user) => {
 
-            alert("Registration successful!");
+    if(user){
 
-            showPage("loginPage");
+        const profileEmail =
+            document.getElementById("profileEmail");
 
-        })
-        .catch((error) => {
+        if(profileEmail){
+            profileEmail.textContent = user.email;
+        }
 
-            document.getElementById("regError")
-                .innerHTML = error.message;
-        });
+        showPage("homePage");
+
+        loadOrders(); // only after login
+
+    } else {
+
+        showPage("loginPage");
+    }
+});
 }
 function logout() {
 
@@ -235,13 +239,4 @@ function loadOrders() {
       });
 }
 
-rules_version = '2';
 
-service cloud.firestore {
-  match /databases/{database}/documents {
-
-    match /bookings/{bookingId} {
-      allow read, write: if request.auth != null;
-    }
-  }
-}
