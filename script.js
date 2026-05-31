@@ -120,6 +120,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
     dateInput.min = minDate;
 });
+
 function showPage(pageId) {
 
     document
@@ -137,27 +138,70 @@ function showPage(pageId) {
 
 function loadParking() {
 
+    const district =
+        document.getElementById("location").value;
+
+    const duration =
+        Number(document.getElementById("duration").value);
+
     const parkingList =
         document.getElementById("parkingList");
 
-    parkingList.innerHTML = "";
+    parkingList.innerHTML = "Loading...";
 
-    parkingAreas.forEach(area => {
+    db.collection("parkingAreas")
+        .where("district", "==", district)
+        .get()
+        .then((snapshot) => {
 
-        parkingList.innerHTML += `
-        <div class="parking-item card">
-            <h3>${area.name}</h3>
-            <p>Price: ${area.price}</p>
+            parkingList.innerHTML = "";
 
-            <button onclick="selectParking('${area.name}','${area.price}')">
-                View Details
-            </button>
-        </div>
-        `;
-    });
+            if(snapshot.empty){
+                parkingList.innerHTML =
+                    "No parking available";
+                return;
+            }
+
+            snapshot.forEach((doc) => {
+
+                const p = doc.data();
+
+                const totalPrice =
+                    p.pricePerHour * duration;
+
+                parkingList.innerHTML += `
+                    <div class="card">
+                        <h3>${p.name}</h3>
+
+                        <p>
+                            Available Slots:
+                            ${p.availableSlots}
+                        </p>
+
+                        <p>
+                            ₹${p.pricePerHour}/hour
+                        </p>
+
+                        <p>
+                            Total:
+                            ₹${totalPrice}
+                        </p>
+
+                        <button
+                            onclick="selectParking(
+                                '${doc.id}',
+                                '${p.name}',
+                                ${totalPrice}
+                            )">
+                            View Details
+                        </button>
+                    </div>
+                `;
+            });
+        });
 }
 
-function selectParking(name, price) {
+function selectParking(id, name, price) {
 
     const location = document.getElementById("location")?.value || "";
     const date = document.getElementById("date")?.value || "";
@@ -165,13 +209,14 @@ function selectParking(name, price) {
     const duration = document.getElementById("duration")?.value || "";
 
     selectedParking = {
-        area: name,
-        price: price,
-        location,
-        date,
-        startTime,
-        duration
-    };
+    parkingId: id,
+    area: name,
+    price: price,
+    location,
+    date,
+    startTime,
+    duration
+};
 
     document.getElementById("detailsContent").innerHTML = `
         <strong>Parking Area:</strong> ${selectedParking.area}<br>
@@ -188,45 +233,63 @@ function confirmBooking() {
 
     const user = firebase.auth().currentUser;
 
-    if(!user){
+    if (!user) {
         alert("Please login first");
         return;
     }
 
+    const start = selectedParking.startTime;
+    const duration = Number(selectedParking.duration);
+
+    const [h, m] = start.split(":").map(Number);
+
+    const startDate = new Date();
+    startDate.setHours(h, m, 0, 0);
+
+    const endDate = new Date(
+        startDate.getTime() + duration * 60 * 60 * 1000
+    );
+
+    const endTime =
+        String(endDate.getHours()).padStart(2, "0") +
+        ":" +
+        String(endDate.getMinutes()).padStart(2, "0");
+
     db.collection("bookings")
-  .add({
-      userEmail: user.email,
-      area: selectedParking.area,
-      location: selectedParking.location,
-      date: selectedParking.date,
+        .add({
+            parkingId: selectedParking.parkingId,
+            userEmail: user.email,
+            area: selectedParking.area,
+            location: selectedParking.location,
+            date: selectedParking.date,
+            startTime: selectedParking.startTime,
+            endTime: endTime,
+            duration: selectedParking.duration,
+            price: selectedParking.price,
+            createdAt:
+                firebase.firestore.FieldValue.serverTimestamp()
+        })
+        .then(() => {
 
-      // ✅ NEW STRUCTURE
-      startTime: selectedParking.startTime,
-      duration: selectedParking.duration,
-
-      price: selectedParking.price,
-      createdAt: firebase.firestore.FieldValue.serverTimestamp()
-  })
-      .then(() => {
-
-          document.getElementById("confirmationContent").innerHTML = `
+            document.getElementById("confirmationContent").innerHTML = `
                 <strong>Parking Area:</strong> ${selectedParking.area}<br>
                 <strong>Location:</strong> ${selectedParking.location}<br>
                 <strong>Date:</strong> ${selectedParking.date}<br>
                 <strong>Start Time:</strong> ${selectedParking.startTime}<br>
+                <strong>End Time:</strong> ${endTime}<br>
                 <strong>Duration:</strong> ${selectedParking.duration} hours<br>
                 <strong>Price:</strong> ${selectedParking.price}
             `;
 
-          showPage("confirmationPage");
+            showPage("confirmationPage");
+
             setTimeout(() => {
                 loadOrders();
             }, 300);
-          
-      })
-      .catch((error) => {
-          alert(error.message);
-      });
+        })
+        .catch((error) => {
+            alert(error.message);
+        });
 }
 
 let currentTab = "upcoming";
