@@ -1,20 +1,5 @@
 let selectedParking = {};
 
-const parkingAreas = [
-    {
-        name: "Central Parking",
-        price: "$10"
-    },
-    {
-        name: "Mall Parking",
-        price: "$15"
-    },
-    {
-        name: "Airport Parking",
-        price: "$20"
-    }
-];
-
 function login() {
 
     let email = document.getElementById("email").value.trim();
@@ -137,7 +122,13 @@ function showPage(pageId) {
 }
 
 function loadParking() {
+const district =
+    document.getElementById("location").value;
 
+if (!district) {
+    alert("Please select a district");
+    return;
+}
     const district =
         document.getElementById("location").value;
 
@@ -189,10 +180,10 @@ function loadParking() {
 
                         <button
                             onclick="selectParking(
-                                '${doc.id}',
-                                '${p.name}',
-                                ${totalPrice}
-                            )">
+                            '${doc.id}',
+                            \`${p.name}\`,
+                            ${totalPrice}
+)"
                             View Details
                         </button>
                     </div>
