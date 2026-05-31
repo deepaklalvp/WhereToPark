@@ -85,7 +85,20 @@
                 </select>
 
                 <input type="date" id="date">
-                <input type="time" id="time">
+                <select id="startTime"></select>
+
+                    <select id="duration">
+                        <option value="1">1 Hour</option>
+                        <option value="2">2 Hours</option>
+                        <option value="3">3 Hours</option>
+                        <option value="6">6 Hours</option>
+                        <option value="12">12 Hours</option>
+                        <option value="24">24 Hours</option>
+                        <option value="48">48 Hours</option>
+                        <option value="72">72 Hours</option>
+                </select>
+
+                    <p id="endTimePreview"></p>
 
                 <button onclick="loadParking()">Search Parking</button>
             </div>
