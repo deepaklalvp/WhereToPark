@@ -38,17 +38,25 @@ function login() {
 }
 function register() {
 
-    const email =
-        document.getElementById("regEmail").value.trim();
+    const email = document.getElementById("regEmail").value.trim();
+    const password = document.getElementById("regPassword").value.trim();
 
-    const password =
-        document.getElementById("regPassword").value.trim();
-
-    if(!email || !password){
+    if (!email || !password) {
         document.getElementById("regError").innerHTML =
             "Please enter email and password";
         return;
     }
+
+    firebase.auth()
+        .createUserWithEmailAndPassword(email, password)
+        .then(() => {
+            showPage("homePage");
+        })
+        .catch((error) => {
+            document.getElementById("regError").innerHTML =
+                error.message;
+        });
+}
 
 firebase.auth().onAuthStateChanged((user) => {
 
@@ -61,19 +69,20 @@ firebase.auth().onAuthStateChanged((user) => {
             profileEmail.textContent = user.email;
         }
 
-        // 🔥 STEP 2: start realtime orders listener AFTER login
         loadOrders();
-
         showPage("homePage");
 
     } else {
 
-        // optional cleanup on logout state
-        document.getElementById("orderHistory").innerHTML = "No bookings yet.";
+        if (unsubscribeOrders) {
+            unsubscribeOrders();
+            unsubscribeOrders = null;
+        }
 
         showPage("loginPage");
     }
 });
+
 function logout() {
 
     firebase.auth()
