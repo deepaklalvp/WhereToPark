@@ -91,3 +91,11 @@ function confirmBooking() {
 
     showPage("confirmationPage");
 }
+function logout() {
+
+    // Optional: clear saved data
+    localStorage.clear();
+
+    // Return to login page
+    showPage("loginPage");
+}
