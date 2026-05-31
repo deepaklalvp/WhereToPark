@@ -125,37 +125,49 @@
         </div>
     </section>
 
-    <!-- PARKING DETAILS PAGE -->
-    <section id="detailsPage" class="page">
-        <div class="container">
-            <div class="card">
-                <h2>Parking Details</h2>
+<!-- PARKING DETAILS PAGE -->
+<section id="detailsPage" class="page">
+    <div class="container">
+        <div class="card">
+            <h2>Parking Details</h2>
 
-                <div id="detailsContent"></div>
+            <div id="detailsContent"></div>
 
-                <button onclick="showPage('paymentPage')">
-                    Book Now
-                </button>
-            </div>
+            <button onclick="showPage('paymentPage')">
+                Book Now
+            </button>
+
+            <button
+                onclick="showPage('homePage')"
+                style="margin-top:10px;"
+            >
+                Back
+            </button>
         </div>
-    </section>
+    </div>
+</section>
+<section id="paymentPage" class="page">
+    <div class="container">
+        <div class="card">
+            <h2>Payment</h2>
 
-    <!-- PAYMENT PAGE -->
-    <section id="paymentPage" class="page">
-        <div class="container">
-            <div class="card">
-                <h2>Payment</h2>
+            <input type="text" placeholder="Card Holder Name">
+            <input type="text" placeholder="Card Number">
+            <input type="text" placeholder="CVV">
 
-                <input type="text" placeholder="Card Holder Name">
-                <input type="text" placeholder="Card Number">
-                <input type="text" placeholder="CVV">
+            <button onclick="confirmBooking()">
+                Pay Now
+            </button>
 
-                <button onclick="confirmBooking()">
-                    Pay Now
-                </button>
-            </div>
+            <button
+                onclick="showPage('detailsPage')"
+                style="margin-top:10px;"
+            >
+                Back
+            </button>
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- CONFIRMATION PAGE -->
     <section id="confirmationPage" class="page">
