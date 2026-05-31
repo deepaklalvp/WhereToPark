@@ -145,8 +145,23 @@
             <button>Profile</button>
         </div>
     </section>
+<!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
 
-    <script src="script.js"></script>
+<script>
+  // Your Firebase config (replace this later)
+  const firebaseConfig = {
+    apiKey: "AIzaSyC8bbz74PfSf_us5x37o6wdkvbnA7cx1EY",
+    authDomain: "wheretopark-36515.firebaseapp.com",
+    projectId: "wheretopark-36515",
+    appId: "1:315424270234:web:1ce05f4ebe8a003e5bbc23"
+  };
+
+  firebase.initializeApp(firebaseConfig);
+</script>
+
+<script src="script.js"></script>
 
 </body>
 </html>
