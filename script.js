@@ -52,35 +52,44 @@ function register() {
 
 firebase.auth().onAuthStateChanged((user) => {
 
-    if(user){
+    if (user) {
 
         const profileEmail =
             document.getElementById("profileEmail");
 
-        if(profileEmail){
+        if (profileEmail) {
             profileEmail.textContent = user.email;
         }
 
+        // 🔥 STEP 2: start realtime orders listener AFTER login
+        loadOrders();
+
         showPage("homePage");
 
-        loadOrders(); // only after login
-
     } else {
+
+        // optional cleanup on logout state
+        document.getElementById("orderHistory").innerHTML = "No bookings yet.";
 
         showPage("loginPage");
     }
 });
-}
 function logout() {
 
     firebase.auth()
         .signOut()
         .then(() => {
 
+            // 🔥 STEP 3: stop realtime Firestore listener
+            if (unsubscribeOrders) {
+                unsubscribeOrders();
+                unsubscribeOrders = null;
+            }
+
             const profileEmail =
                 document.getElementById("profileEmail");
 
-            if(profileEmail){
+            if (profileEmail) {
                 profileEmail.textContent = "";
             }
 
@@ -115,11 +124,15 @@ function showPage(pageId) {
         .querySelectorAll(".page")
         .forEach(page => page.classList.remove("active"));
 
-    const page =
-        document.getElementById(pageId);
+    const page = document.getElementById(pageId);
 
     if(page){
         page.classList.add("active");
+    }
+
+    // 🔥 important fix
+    if(pageId === "ordersPage"){
+        loadOrders();
     }
 }
 
@@ -203,40 +216,47 @@ function confirmBooking() {
       });
 }
 
+let unsubscribeOrders = null;
+
 function loadOrders() {
 
     const user = firebase.auth().currentUser;
 
-    if(!user) return;
+    if (!user) return;
 
-    db.collection("bookings")
-      .where("userEmail", "==", user.email)
-      .get()
-      .then((snapshot) => {
+    // 🔥 stop previous listener (important)
+    if (unsubscribeOrders) {
+        unsubscribeOrders();
+    }
 
-          let html = "";
+    const query = db.collection("bookings")
+        .where("userEmail", "==", user.email);
 
-          snapshot.forEach((doc) => {
+    unsubscribeOrders = query.onSnapshot((snapshot) => {
 
-              const booking = doc.data();
+        let html = "";
 
-              html += `
-              <div class="card">
-                  <h3>${booking.area}</h3>
-                  <p>${booking.location}</p>
-                  <p>${booking.date}</p>
-                  <p>${booking.time}</p>
-                  <p>${booking.price}</p>
-              </div>
-              `;
-          });
+        snapshot.forEach((doc) => {
 
-          if(html === ""){
-              html = "No bookings yet.";
-          }
+            const booking = doc.data();
 
-          document.getElementById("orderHistory").innerHTML = html;
-      });
+            html += `
+                <div class="card">
+                    <h3>${booking.area}</h3>
+                    <p>${booking.location}</p>
+                    <p>${booking.date}</p>
+                    <p>${booking.time}</p>
+                    <p>${booking.price}</p>
+                </div>
+            `;
+        });
+
+        if (!html) {
+            html = "No bookings yet.";
+        }
+
+        document.getElementById("orderHistory").innerHTML = html;
+    });
 }
 
 
