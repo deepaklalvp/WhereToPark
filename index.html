@@ -131,21 +131,24 @@
         <div class="card">
             <h2>Parking Details</h2>
 
-            <div id="detailsContent"></div>
+            <div style="display:flex; gap:10px; margin-top:15px;">
+    <button
+        style="flex:1;"
+        onclick="showPage('homePage')">
+        Back
+    </button>
 
-            <button onclick="showPage('paymentPage')">
-                Book Now
-            </button>
-
-            <button
-                onclick="showPage('homePage')"
-                style="margin-top:10px;"
-            >
-                Back
-            </button>
+    <button
+        style="flex:1;"
+        onclick="showPage('paymentPage')">
+        Book Now
+    </button>
+</div>
         </div>
     </div>
 </section>
+
+ <!-- payment page -->
 <section id="paymentPage" class="page">
     <div class="container">
         <div class="card">
