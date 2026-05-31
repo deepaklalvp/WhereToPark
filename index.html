@@ -158,16 +158,19 @@
             <input type="text" placeholder="Card Number">
             <input type="text" placeholder="CVV">
 
-            <button onclick="confirmBooking()">
-                Pay Now
-            </button>
+            <div style="display:flex; gap:10px; margin-top:15px;">
+                <button
+                    style="flex:1;"
+                    onclick="showPage('detailsPage')">
+                    Back
+                </button>
 
-            <button
-                onclick="showPage('detailsPage')"
-                style="margin-top:10px;"
-            >
-                Back
-            </button>
+                <button
+                    style="flex:1;"
+                    onclick="confirmBooking()">
+                    Pay Now
+                </button>
+            </div>
         </div>
     </div>
 </section>
