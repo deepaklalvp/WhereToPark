@@ -15,7 +15,7 @@ body{
     padding:20px;
 }
 
-.active{
+.page.active{
     display:block;
 }
 
