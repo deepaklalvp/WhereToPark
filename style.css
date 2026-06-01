@@ -143,8 +143,8 @@ button:active{
 }
 
 .bottom-nav button.active{
-    background:#2962FF;
-    color:#fff;
+    background:var(--primary-container);
+    color:var(--primary);
 }
 
 .bottom-nav button:hover{
