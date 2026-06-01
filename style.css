@@ -56,7 +56,7 @@ body{
 .page{
     display:none;
     min-height:100vh;
-    padding:24px 16px 90px;
+    padding:24px 16px calc(110px + env(safe-area-inset-bottom));
 }
 
 .page.active{
