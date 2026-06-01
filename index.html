@@ -228,28 +228,34 @@
 
     <br>
 <div class="profile-actions">
-   <button onclick="showPage('termsPage')">
-    <span class="material-icons">gavel</span>
-    Terms & Conditions
-</button>
+  <div class="profile-actions">
+    
+    <button class="profile-btn" onclick="showPage('termsPage')">
+        <span class="material-icons">gavel</span>
+        Terms & Conditions
+    </button>
 
-<button onclick="showPage('privacyPage')">
-    <span class="material-icons">privacy_tip</span>
-    Privacy Policy
-</button>
+    <button class="profile-btn" onclick="showPage('privacyPage')">
+        <span class="material-icons">privacy_tip</span>
+        Privacy Policy
+    </button>
 
-<button onclick="showPage('helpPage')">
-    <span class="material-icons">help</span>
-    Help & Support
-</button>
-      <button class="theme-btn" onclick="toggleTheme()">
+    <button class="profile-btn" onclick="showPage('helpPage')">
+        <span class="material-icons">help</span>
+        Help & Support
+    </button>
+
+    <button class="profile-btn theme-btn" onclick="toggleTheme()">
         <span class="material-icons">dark_mode</span>
         Light / Dark Theme
     </button>
-    <button class="logout-btn" onclick="logout()">
+
+    <button class="profile-btn logout-btn" onclick="logout()">
         <span class="material-icons">logout</span>
         Logout
     </button>
+
+</div>
 </div>
           </div>
         </div>
