@@ -307,4 +307,14 @@ button:active{
     width: 100%;
 }
 
+.map-card {
+    padding: 12px;
+}
 
+#map {
+    width: 100%;
+    height: 200px;
+    border-radius: 16px;
+    background: var(--surface-variant);
+    overflow: hidden;
+}
