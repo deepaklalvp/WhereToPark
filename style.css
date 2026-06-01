@@ -2,125 +2,173 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Arial, sans-serif;
+    font-family:'Segoe UI', sans-serif;
 }
 
 body{
-    background:#f5f5f5;
+    background:#F8F9FD;
+    color:#1E1E1E;
 }
 
+/* Pages */
 .page{
     display:none;
     min-height:100vh;
-    padding:20px;
+    padding:24px 16px 90px;
 }
 
 .page.active{
     display:block;
 }
 
+/* Layout */
 .container{
-    max-width:500px;
+    max-width:550px;
     margin:auto;
 }
 
+/* Flutter Style Card */
 .card{
     background:#fff;
     padding:20px;
-    border-radius:12px;
-    box-shadow:0 2px 10px rgba(0,0,0,.1);
-    margin-bottom:15px;
+    border-radius:20px;
+    box-shadow:
+        0 4px 12px rgba(0,0,0,.05),
+        0 1px 3px rgba(0,0,0,.08);
+    margin-bottom:16px;
+    transition:.3s;
 }
 
+.card:hover{
+    transform:translateY(-2px);
+}
+
+/* Typography */
 h2{
-    margin-bottom:15px;
+    margin-bottom:18px;
+    font-size:24px;
+    font-weight:700;
 }
 
+/* Inputs */
 input,
 select{
     width:100%;
-    padding:12px;
+    padding:14px 16px;
     margin:10px 0;
-    border:1px solid #ccc;
-    border-radius:8px;
+    border:none;
+    border-radius:14px;
+    background:#F3F4F6;
+    font-size:15px;
+    transition:.2s;
 }
 
+input:focus,
+select:focus{
+    outline:none;
+    background:#fff;
+    box-shadow:0 0 0 3px rgba(33,150,243,.15);
+}
+
+/* Buttons */
 button{
     width:100%;
-    padding:12px;
+    padding:14px;
     border:none;
-    border-radius:8px;
-    background:#007bff;
+    border-radius:14px;
+    background:#2962FF;
     color:#fff;
+    font-size:15px;
+    font-weight:600;
     cursor:pointer;
+    transition:.2s;
 }
 
 button:hover{
-    background:#0056b3;
+    background:#1E4FE0;
 }
 
+button:active{
+    transform:scale(.98);
+}
+
+/* Parking Cards */
 .parking-item{
-    border:1px solid #ddd;
-    border-radius:10px;
-    padding:15px;
-    margin-bottom:10px;
+    background:#fff;
+    border:none;
+    border-radius:18px;
+    padding:18px;
+    margin-bottom:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.06);
 }
 
+/* Bottom Navigation */
 .bottom-nav{
     position:fixed;
-    bottom:0;
-    width:100%;
-    left:0;
+    bottom:15px;
+    left:15px;
+    right:15px;
+    width:auto;
     display:flex;
-    border-top:1px solid #ddd;
+    gap:10px;
+    padding:10px;
+    border-radius:22px;
     background:#fff;
+    box-shadow:0 6px 20px rgba(0,0,0,.12);
 }
 
 .bottom-nav button{
     flex:1;
-    border-radius:0;
-    background:#fff;
-    color:#333;
+    border-radius:16px;
+    background:transparent;
+    color:#666;
+    font-weight:600;
+}
+
+.bottom-nav button.active{
+    background:#2962FF;
+    color:#fff;
 }
 
 .bottom-nav button:hover{
-    background:#eee;
+    background:#EEF3FF;
 }
 
+/* Tabs */
+.tabs{
+    display:flex;
+    gap:10px;
+    margin-bottom:16px;
+}
+
+.tab{
+    flex:1;
+    padding:12px;
+    border:none;
+    border-radius:14px;
+    background:#ECEFF3;
+    color:#666;
+    font-weight:600;
+    transition:.2s;
+}
+
+.tab.active{
+    background:#2962FF;
+    color:#fff;
+}
+
+/* Details */
 #detailsContent,
 #confirmationContent{
-    line-height:2;
-    margin-bottom:20px;
+    line-height:1.8;
+    font-size:15px;
 }
+
+/* Logout */
 .logout-btn{
-    background:#dc3545;
+    background:#FF5252;
 }
 
 .logout-btn:hover{
-    background:#b02a37;
-}
-
-.tabs {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 15px;
-}
-
-/* default tab */
-.tab {
-    flex: 1;
-    padding: 10px;
-    border: none;
-    border-radius: 8px;
-    background: #e0e0e0;
-    color: #333;
-    font-weight: 600;
-    cursor: pointer;
-    transition: 0.2s;
-}
-
-/* active tab (dark) */
-.tab.active {
-    background: #222;
-    color: #fff;
+    background:#E53935;
 }
