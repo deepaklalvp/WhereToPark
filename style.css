@@ -141,7 +141,17 @@ button:hover{
 button:active{
     transform:scale(.98);
 }
+.icon-btn{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+}
 
+.icon-btn .material-icons{
+    font-size:20px;
+    line-height:1;
+}
 /* Parking Cards */
 .parking-item{
     background:var(--surface);
