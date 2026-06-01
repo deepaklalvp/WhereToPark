@@ -318,3 +318,22 @@ button:active{
     background: var(--surface-variant);
     overflow: hidden;
 }
+
+.search-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.toggle-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    width: auto;
+    padding: 6px;
+    color: var(--on-surface);
+}
+
+#searchCard.collapsed #searchContent {
+    display: none;
+}
