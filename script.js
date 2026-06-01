@@ -381,24 +381,42 @@ function showOrderDetails(id, area, location, date, startTime, endTime, duration
 function generateTimeSlots() {
 
     const startTime = document.getElementById("startTime");
+    const selectedDate = document.getElementById("date").value;
 
-    let times = [];
+    startTime.innerHTML = "";
+
+    const now = new Date();
+
+    const today =
+        now.getFullYear() + "-" +
+        String(now.getMonth() + 1).padStart(2, "0") + "-" +
+        String(now.getDate()).padStart(2, "0");
 
     for (let h = 0; h < 24; h++) {
+
         for (let m of [0, 15, 30, 45]) {
+
+            // Only filter when selected date is TODAY
+            if (selectedDate === today) {
+
+                const slotTime = new Date();
+                slotTime.setHours(h, m, 0, 0);
+
+                if (slotTime <= now) {
+                    continue; // skip past times
+                }
+            }
 
             const hh = String(h).padStart(2, "0");
             const mm = String(m).padStart(2, "0");
 
-            times.push(`${hh}:${mm}`);
+            startTime.innerHTML += `
+                <option value="${hh}:${mm}">
+                    ${hh}:${mm}
+                </option>
+            `;
         }
     }
-
-    startTime.innerHTML = "";
-
-    times.forEach(t => {
-        startTime.innerHTML += `<option value="${t}">${t}</option>`;
-    });
 }
 
 function toggleTheme() {
@@ -442,7 +460,8 @@ function updateEndTime() {
 window.addEventListener("DOMContentLoaded", () => {
 
     generateTimeSlots();
-
+    document.getElementById("date")
+    .addEventListener("change", generateTimeSlots);
     document.getElementById("startTime").addEventListener("change", updateEndTime);
     document.getElementById("duration").addEventListener("change", updateEndTime);
 });
