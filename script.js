@@ -96,14 +96,14 @@ window.addEventListener("DOMContentLoaded", () => {
 
     const dateInput = document.getElementById("date");
 
-    const today = new Date();
-    const yyyy = today.getFullYear();
-    const mm = String(today.getMonth() + 1).padStart(2, "0");
-    const dd = String(today.getDate()).padStart(2, "0");
+    if (dateInput) {
+        const today = new Date();
+        const yyyy = today.getFullYear();
+        const mm = String(today.getMonth() + 1).padStart(2, "0");
+        const dd = String(today.getDate()).padStart(2, "0");
 
-    const minDate = `${yyyy}-${mm}-${dd}`;
-
-    dateInput.min = minDate;
+        dateInput.min = `${yyyy}-${mm}-${dd}`;
+    }
 });
 
 function showPage(pageId, btn) {
@@ -216,6 +216,11 @@ function confirmBooking() {
     }
 
     const start = selectedParking.startTime;
+
+        if (!start) {
+            alert("Please select start time");
+        return;
+        }
     const duration = Number(selectedParking.duration);
 
     const [h, m] = start.split(":").map(Number);
