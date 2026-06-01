@@ -142,15 +142,18 @@ button:active{
     transform:scale(.98);
 }
 .icon-btn{
-    display:flex;
+    display:inline-flex;
     align-items:center;
     justify-content:center;
-    gap:8px;
+    gap:10px;
+    line-height:1;
 }
 
 .icon-btn .material-icons{
     font-size:20px;
-    line-height:1;
+    display:flex;
+    align-items:center;
+}
 }
 /* Parking Cards */
 .parking-item{
@@ -299,8 +302,10 @@ button:active{
 }
 
 /* Material icon alignment */
-.logout-btn .material-icons,
-.theme-btn .material-icons {
-    font-size: 20px;
-    line-height: 1;
+.logout-btn,
+.theme-btn{
+    display:flex;
+    align-items:center;
+    justify-content:flex-start;
+    gap:10px;
 }
