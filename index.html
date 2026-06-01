@@ -75,18 +75,18 @@
 </section>
     <!-- HOME PAGE -->
     <section id="homePage" class="page">
-        <div class="container">
+        <div class="card" id="searchCard">
 
-            <div class="card" id="searchCard">
-
-    <div class="search-header">
+    <!-- HEADER -->
+    <div class="search-header" onclick="toggleSearchCard()">
         <h2>Find Parking</h2>
 
-        <button class="toggle-btn" onclick="toggleSearchCard()">
-            <span class="material-icons">keyboard_arrow_up</span>
-        </button>
+        <span class="material-icons" id="searchIcon">
+            keyboard_arrow_up
+        </span>
     </div>
 
+    <!-- CONTENT -->
     <div id="searchContent">
 
         <select id="location">
@@ -130,6 +130,7 @@
         </button>
 
     </div>
+
 </div>
 <div class="card map-card">
     <h3>Nearby Parking Map</h3>
