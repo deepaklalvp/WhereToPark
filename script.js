@@ -23,21 +23,48 @@ function login() {
 }
 function register() {
 
-    const email = document.getElementById("regEmail").value.trim();
-    const password = document.getElementById("regPassword").value.trim();
+    const name =
+        document.getElementById("regName").value.trim();
 
-    if (!email || !password) {
+    const phone =
+        document.getElementById("regPhone").value.trim();
+
+    const email =
+        document.getElementById("regEmail").value.trim();
+
+    const password =
+        document.getElementById("regPassword").value.trim();
+
+    if (!name || !phone || !email || !password) {
+
         document.getElementById("regError").innerHTML =
-            "Please enter email and password";
+            "Please fill all fields";
+
         return;
     }
 
     firebase.auth()
         .createUserWithEmailAndPassword(email, password)
-        .then(() => {
+
+        .then(async (userCredential) => {
+
+            const uid = userCredential.user.uid;
+
+            await db.collection("users")
+                .doc(uid)
+                .set({
+                    name: name,
+                    phone: phone,
+                    email: email,
+                    createdAt:
+                        firebase.firestore.FieldValue.serverTimestamp()
+                });
+
             showPage("homePage");
         })
+
         .catch((error) => {
+
             document.getElementById("regError").innerHTML =
                 error.message;
         });
