@@ -108,22 +108,21 @@ window.addEventListener("DOMContentLoaded", () => {
 
 function showPage(pageId, btn) {
 
-    document
-        .querySelectorAll(".page")
+    document.querySelectorAll(".page")
         .forEach(page => page.classList.remove("active"));
 
     const page = document.getElementById(pageId);
+    if (page) page.classList.add("active");
 
-    if(page){
-        page.classList.add("active");
-    }
+    // ONLY update nav if buttons exist in DOM
+    const navButtons = document.querySelectorAll(".nav-btn");
+    if (navButtons.length > 0) {
 
-    if(btn){
-        document
-            .querySelectorAll(".nav-btn")
-            .forEach(button => button.classList.remove("active"));
+        navButtons.forEach(b => b.classList.remove("active"));
 
-        btn.classList.add("active");
+        if (btn) {
+            btn.classList.add("active");
+        }
     }
 }
 
