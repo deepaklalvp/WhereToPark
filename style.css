@@ -250,6 +250,27 @@ button:active{
     justify-content: center;
     gap: 8px;
 }
+/* Profile menu buttons */
+.profile-btn {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+
+    width: 100%;
+    margin-top: 10px;
+
+    background: var(--surface-variant);
+    color: var(--on-surface);
+
+    padding: 14px;
+    border-radius: 14px;
+}
+
+.profile-btn:hover {
+    background: var(--primary-container);
+    color: var(--primary);
+}
 
 /* Material icon alignment */
 .logout-btn .material-icons,
