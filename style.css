@@ -241,3 +241,19 @@ button:active{
 .logout-btn:hover{
     background:#E53935;
 }
+
+/* PROFILE BUTTON FIX */
+.logout-btn,
+.theme-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+/* Material icon alignment */
+.logout-btn .material-icons,
+.theme-btn .material-icons {
+    font-size: 20px;
+    line-height: 1;
+}
