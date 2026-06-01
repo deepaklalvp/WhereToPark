@@ -154,6 +154,20 @@ function toggleSearchCard() {
         icon.textContent = "keyboard_arrow_up";
     }
 }
+
+function toggleSearchCard() {
+    const card = document.getElementById("searchCard");
+    const icon = document.getElementById("searchIcon");
+
+    card.classList.toggle("collapsed");
+
+    if (card.classList.contains("collapsed")) {
+        icon.textContent = "keyboard_arrow_down";
+    } else {
+        icon.textContent = "keyboard_arrow_up";
+    }
+}
+
 function loadParking() {
       toggleSearchCard(); // auto collapse after search
     const district =
