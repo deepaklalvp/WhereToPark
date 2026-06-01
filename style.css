@@ -164,7 +164,7 @@ button:active{
     margin-bottom:12px;
     box-shadow:0 3px 10px rgba(0,0,0,.2);
 }
-/* Bottom Navigation */
+
 /* Bottom Navigation */
 .bottom-nav{
     position:fixed;
@@ -353,4 +353,16 @@ button:active{
 
 #searchCard.collapsed #searchContent {
     display: none;
+}
+
+/* Leaflet fix */
+.leaflet-container {
+    z-index: 1;
+}
+
+.leaflet-pane,
+.leaflet-top,
+.leaflet-bottom,
+.leaflet-control {
+    z-index: 1 !important;
 }
