@@ -114,14 +114,29 @@ function showPage(pageId, btn) {
     const page = document.getElementById(pageId);
     if (page) page.classList.add("active");
 
-    // ONLY update nav if buttons exist in DOM
     const navButtons = document.querySelectorAll(".nav-btn");
+
     if (navButtons.length > 0) {
 
         navButtons.forEach(b => b.classList.remove("active"));
 
+        // IMPORTANT FIX ↓
         if (btn) {
             btn.classList.add("active");
+        } 
+        else {
+            // fallback auto-highlight based on pageId
+            const map = {
+                homePage: 0,
+                ordersPage: 1,
+                profilePage: 2
+            };
+
+            const buttons = document.querySelectorAll(".nav-btn");
+
+            if (map[pageId] !== undefined && buttons[map[pageId]]) {
+                buttons[map[pageId]].classList.add("active");
+            }
         }
     }
 }
