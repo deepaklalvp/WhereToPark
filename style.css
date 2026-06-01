@@ -272,6 +272,17 @@ button:active{
     color: var(--primary);
 }
 
+.profile-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.profile-actions button {
+    width: 100%;
+}
+
 /* Material icon alignment */
 .logout-btn .material-icons,
 .theme-btn .material-icons {
