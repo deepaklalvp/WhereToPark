@@ -225,16 +225,32 @@
 
     <br>
 
-            <button class="logout-btn" onclick="logout()">
-                <span class="material-icons">logout</span>
-                Logout
+         
+
+            
+          <button class="profile-btn" onclick="showPage('termsPage')">
+                <span class="material-icons">description</span>
+                    Terms & Conditions
+          </button>
+
+            <button class="profile-btn" onclick="showPage('privacyPage')">
+                <span class="material-icons">privacy_tip</span>
+                Privacy Policy
             </button>
 
-            <button onclick="toggleTheme()" class="theme-btn">
+            <button class="profile-btn" onclick="showPage('helpPage')">
+                <span class="material-icons">help</span>
+                Help & Support
+            </button>
+                <button onclick="toggleTheme()" class="theme-btn">
                 <span class="material-icons">dark_mode</span>
                   Light/Dark Theme
             </button>
-</div>
+                   <button class="logout-btn" onclick="logout()">
+                <span class="material-icons">logout</span>
+                Logout
+            </button>
+          </div>
         </div>
     </section>
 
