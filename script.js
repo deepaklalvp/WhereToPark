@@ -102,7 +102,12 @@ window.addEventListener("DOMContentLoaded", () => {
         const mm = String(today.getMonth() + 1).padStart(2, "0");
         const dd = String(today.getDate()).padStart(2, "0");
 
-        dateInput.min = `${yyyy}-${mm}-${dd}`;
+        const todayString = `${yyyy}-${mm}-${dd}`;
+
+        dateInput.min = todayString;
+
+        // Automatically select today
+        dateInput.value = todayString;
     }
 });
 
@@ -460,8 +465,13 @@ function updateEndTime() {
 window.addEventListener("DOMContentLoaded", () => {
 
     generateTimeSlots();
+
     document.getElementById("date")
-    .addEventListener("change", generateTimeSlots);
-    document.getElementById("startTime").addEventListener("change", updateEndTime);
-    document.getElementById("duration").addEventListener("change", updateEndTime);
+        .addEventListener("change", generateTimeSlots);
+
+    document.getElementById("startTime")
+        .addEventListener("change", updateEndTime);
+
+    document.getElementById("duration")
+        .addEventListener("change", updateEndTime);
 });
