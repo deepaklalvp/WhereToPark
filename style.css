@@ -176,17 +176,30 @@ button:active{
     color:var(--on-surface);
     font-weight:600;
     padding:10px;
+
+    /* 👇 ADD THIS */
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:4px;
+
     transition:0.25s;
+}
+
+.bottom-nav .material-icons{
+    font-size:22px;
 }
 
 .bottom-nav button.active{
     background:var(--primary-container);
     color:var(--primary);
-    box-shadow:0 6px 16px rgba(103,80,164,0.25);
+    box-shadow:0 8px 20px rgba(103,80,164,0.3);
+    transform:translateY(-2px);
 }
 
 .bottom-nav button:hover{
-    background:rgba(255,255,255,0.2);
+    background:var(--surface-variant);;
 }
 
 /* Tabs */
