@@ -35,6 +35,10 @@ function register() {
     const password =
         document.getElementById("regPassword").value.trim();
 
+    console.log("Name:", name);
+console.log("Phone:", phone);
+console.log("Email:", email);
+
     if (!name || !phone || !email || !password) {
 
         document.getElementById("regError").innerHTML =
