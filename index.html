@@ -6,6 +6,7 @@
     <title>Parking Booking App</title>
 
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
 
@@ -119,10 +120,21 @@
         </div>
 
         <div class="bottom-nav">
-            <button class="nav-btn active" onclick="showPage('homePage', this)">Home</button>
-            <button class="nav-btn" onclick="showPage('ordersPage', this)">My Orders</button>
-            <button class="nav-btn" onclick="showPage('profilePage', this)">Profile</button>
-        </div>
+    <button class="nav-btn active" onclick="showPage('homePage', this)">
+        <span class="material-icons">home</span>
+        <small>Home</small>
+    </button>
+
+    <button class="nav-btn" onclick="showPage('ordersPage', this)">
+        <span class="material-icons">receipt_long</span>
+        <small>Orders</small>
+    </button>
+
+    <button class="nav-btn" onclick="showPage('profilePage', this)">
+        <span class="material-icons">person</span>
+        <small>Profile</small>
+    </button>
+</div>
     </section>
 
 <!-- PARKING DETAILS PAGE -->
