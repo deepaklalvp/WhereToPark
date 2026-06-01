@@ -161,19 +161,33 @@ function showPage(pageId, btn) {
         .forEach(p => p.classList.remove("active"));
 
     const page = document.getElementById(pageId);
-    if (page) page.classList.add("active");
+
+    if (page) {
+        page.classList.add("active");
+    }
+
+    // Bottom navigation
+    const bottomNav = document.getElementById("bottomNav");
+
+    const hideNavPages = [
+        "loginPage",
+        "registerPage"
+    ];
+
+    if (hideNavPages.includes(pageId)) {
+        bottomNav.style.display = "none";
+    } else {
+        bottomNav.style.display = "flex";
+    }
 
     const navButtons = document.querySelectorAll(".nav-btn");
-    if (navButtons.length === 0) return;
 
     navButtons.forEach(b => b.classList.remove("active"));
 
-    // clicked from nav
     if (btn) {
         btn.classList.add("active");
     }
 
-    // fallback for programmatic navigation
     const pages = {
         homePage: 0,
         ordersPage: 1,
