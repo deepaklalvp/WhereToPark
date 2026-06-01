@@ -1,3 +1,20 @@
+:root{
+    --primary:#6750A4;
+    --primary-container:#EADDFF;
+
+    --secondary:#625B71;
+    --secondary-container:#E8DEF8;
+
+    --surface:#FFFFFF;
+    --surface-variant:#E7E0EC;
+
+    --background:#F7F2FA;
+
+    --on-primary:#FFFFFF;
+    --on-surface:#1C1B1F;
+
+    --error:#B3261E;
+}
 *{
     margin:0;
     padding:0;
