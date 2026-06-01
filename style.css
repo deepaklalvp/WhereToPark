@@ -337,3 +337,17 @@ button:active{
 #searchCard.collapsed #searchContent {
     display: none;
 }
+.search-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+#searchIcon {
+    transition: 0.3s;
+}
+
+#searchCard.collapsed #searchContent {
+    display: none;
+}
