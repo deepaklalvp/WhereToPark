@@ -106,7 +106,7 @@ window.addEventListener("DOMContentLoaded", () => {
     dateInput.min = minDate;
 });
 
-function showPage(pageId) {
+function showPage(pageId, btn) {
 
     document
         .querySelectorAll(".page")
@@ -118,7 +118,14 @@ function showPage(pageId) {
         page.classList.add("active");
     }
 
- 
+    // Update active nav button
+    document
+        .querySelectorAll(".nav-btn")
+        .forEach(button => button.classList.remove("active"));
+
+    if(btn){
+        btn.classList.add("active");
+    }
 }
 
 function loadParking() {
