@@ -335,11 +335,11 @@ function loadOrders() {
             const bookingDateTime = new Date(`${b.date}T${b.startTime}`);
 
             const html = `
-                <div class="card">
+                <div class="card" onclick="showOrderDetails('${doc.id}', '${b.area}', '${b.location}', '${b.date}', '${b.startTime}', '${b.endTime}', '${b.duration}', '${b.price}')">
                     <h3>${b.area}</h3>
                     <p>${b.location}</p>
-                    <p>${b.date} - ${b.startTime} (${b.duration} hrs)</p>
-                    <p>${b.price}</p>
+                    <p>${b.date} - ${b.startTime}</p>
+                    <p>₹${b.price}</p>
                 </div>
             `;
 
@@ -359,6 +359,28 @@ function loadOrders() {
         }
     });
 }
+
+function showOrderDetails(id, area, location, date, startTime, endTime, duration, price) {
+
+    const html = `
+        <h3>${area}</h3>
+        <p><strong>Location:</strong> ${location}</p>
+        <p><strong>Date:</strong> ${date}</p>
+        <p><strong>Start Time:</strong> ${startTime}</p>
+        <p><strong>End Time:</strong> ${endTime}</p>
+        <p><strong>Duration:</strong> ${duration} hours</p>
+        <p><strong>Price:</strong> ₹${price}</p>
+    `;
+
+    // create popup or reuse page
+    document.getElementById("orderHistory").innerHTML = `
+        <div class="card">
+            ${html}
+            <button onclick="loadOrders()">Back</button>
+        </div>
+    `;
+}
+
 function generateTimeSlots() {
 
     const startTime = document.getElementById("startTime");
