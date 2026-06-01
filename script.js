@@ -108,39 +108,39 @@ window.addEventListener("DOMContentLoaded", () => {
 
 function showPage(pageId, btn) {
 
+    // 1. Switch page
     document.querySelectorAll(".page")
-        .forEach(page => page.classList.remove("active"));
+        .forEach(p => p.classList.remove("active"));
 
     const page = document.getElementById(pageId);
     if (page) page.classList.add("active");
 
+    // 2. Handle bottom nav safely
     const navButtons = document.querySelectorAll(".nav-btn");
 
-    if (navButtons.length > 0) {
+    if (navButtons.length === 0) return;
 
-        navButtons.forEach(b => b.classList.remove("active"));
+    navButtons.forEach(b => b.classList.remove("active"));
 
-        // IMPORTANT FIX ↓
-        if (btn) {
-            btn.classList.add("active");
-        } 
-        else {
-            // fallback auto-highlight based on pageId
-            const map = {
-                homePage: 0,
-                ordersPage: 1,
-                profilePage: 2
-            };
+    // CASE 1: clicked directly from nav
+    if (btn) {
+        btn.classList.add("active");
+        return;
+    }
 
-            const buttons = document.querySelectorAll(".nav-btn");
+    // CASE 2: programmatic navigation (login/logout/auth)
+    const pages = {
+        homePage: 0,
+        ordersPage: 1,
+        profilePage: 2
+    };
 
-            if (map[pageId] !== undefined && buttons[map[pageId]]) {
-                buttons[map[pageId]].classList.add("active");
-            }
-        }
+    const index = pages[pageId];
+
+    if (index !== undefined && navButtons[index]) {
+        navButtons[index].classList.add("active");
     }
 }
-
 function loadParking() {
 
     const district =
