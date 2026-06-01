@@ -404,6 +404,23 @@ function generateTimeSlots() {
     });
 }
 
+function toggleTheme() {
+    document.body.classList.toggle("dark");
+
+    localStorage.setItem(
+        "theme",
+        document.body.classList.contains("dark") ? "dark" : "light"
+    );
+}
+
+window.addEventListener("DOMContentLoaded", () => {
+    const theme = localStorage.getItem("theme");
+
+    if (theme === "dark") {
+        document.body.classList.add("dark");
+    }
+});
+
 function updateEndTime() {
 
     const start = document.getElementById("startTime").value;
