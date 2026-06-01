@@ -74,17 +74,30 @@ firebase.auth().onAuthStateChanged((user) => {
 
     if (user) {
 
-        const profileEmail =
-            document.getElementById("profileEmail");
+    db.collection("users")
+        .doc(user.uid)
+        .get()
+        .then((doc) => {
 
-        if (profileEmail) {
-            profileEmail.textContent = user.email;
-        }
+            if (doc.exists) {
 
-        loadOrders();
-        showPage("homePage");
+                const data = doc.data();
 
-    } else {
+                document.getElementById("profileName")
+                    .textContent = data.name || "";
+
+                document.getElementById("profilePhone")
+                    .textContent = data.phone || "";
+
+                document.getElementById("profileEmail")
+                    .textContent = data.email || user.email;
+            }
+        });
+
+    loadOrders();
+    showPage("homePage");
+}
+    else {
 
         if (unsubscribeOrders) {
             unsubscribeOrders();
