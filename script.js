@@ -108,27 +108,23 @@ window.addEventListener("DOMContentLoaded", () => {
 
 function showPage(pageId, btn) {
 
-    // 1. Switch page
     document.querySelectorAll(".page")
         .forEach(p => p.classList.remove("active"));
 
     const page = document.getElementById(pageId);
     if (page) page.classList.add("active");
 
-    // 2. Handle bottom nav safely
     const navButtons = document.querySelectorAll(".nav-btn");
-
     if (navButtons.length === 0) return;
 
     navButtons.forEach(b => b.classList.remove("active"));
 
-    // CASE 1: clicked directly from nav
+    // clicked from nav
     if (btn) {
         btn.classList.add("active");
-        return;
     }
 
-    // CASE 2: programmatic navigation (login/logout/auth)
+    // fallback for programmatic navigation
     const pages = {
         homePage: 0,
         ordersPage: 1,
@@ -141,6 +137,7 @@ function showPage(pageId, btn) {
         navButtons[index].classList.add("active");
     }
 }
+
 function loadParking() {
 
     const district =
