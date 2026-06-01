@@ -22,9 +22,28 @@
     font-family:'Segoe UI', sans-serif;
 }
 
+body.dark{
+
+    --primary:#D0BCFF;
+    --primary-container:#4F378B;
+
+    --secondary:#CCC2DC;
+    --secondary-container:#4A4458;
+
+    --surface:#1C1B1F;
+    --surface-variant:#49454F;
+
+    --background:#121212;
+
+    --on-primary:#000000;
+    --on-surface:#FFFFFF;
+
+    --error:#F2B8B5;
+}
+
 body{
-    background:#F8F9FD;
-    color:#1E1E1E;
+    background:var(--background);
+    color:var(--on-surface);
 }
 
 /* Pages */
@@ -46,7 +65,8 @@ body{
 
 /* Flutter Style Card */
 .card{
-    background:#fff;
+    background:var(--surface);
+    color:var(--on-surface);
     padding:20px;
     border-radius:20px;
     box-shadow:
@@ -75,7 +95,8 @@ select{
     margin:10px 0;
     border:none;
     border-radius:14px;
-    background:#F3F4F6;
+     background:var(--surface-variant);
+    color:var(--on-surface);
     font-size:15px;
     transition:.2s;
 }
@@ -83,7 +104,8 @@ select{
 input:focus,
 select:focus{
     outline:none;
-    background:#fff;
+    background:var(--surface-variant);
+    color:var(--on-surface);
     box-shadow:0 0 0 3px rgba(33,150,243,.15);
 }
 
@@ -93,8 +115,8 @@ button{
     padding:14px;
     border:none;
     border-radius:14px;
-    background:#2962FF;
-    color:#fff;
+    background:var(--primary);
+    color:var(--on-primary);
     font-size:15px;
     font-weight:600;
     cursor:pointer;
@@ -111,14 +133,14 @@ button:active{
 
 /* Parking Cards */
 .parking-item{
-    background:#fff;
+    background:var(--surface);
+    color:var(--on-surface);
     border:none;
     border-radius:18px;
     padding:18px;
     margin-bottom:12px;
-    box-shadow:0 3px 10px rgba(0,0,0,.06);
+    box-shadow:0 3px 10px rgba(0,0,0,.2);
 }
-
 /* Bottom Navigation */
 .bottom-nav{
     position:fixed;
@@ -130,7 +152,7 @@ button:active{
     gap:10px;
     padding:10px;
     border-radius:22px;
-    background:#fff;
+    background:var(--surface);
     box-shadow:0 6px 20px rgba(0,0,0,.12);
 }
 
@@ -148,7 +170,7 @@ button:active{
 }
 
 .bottom-nav button:hover{
-    background:#EEF3FF;
+    background:var(--surface-variant);
 }
 
 /* Tabs */
@@ -163,15 +185,16 @@ button:active{
     padding:12px;
     border:none;
     border-radius:14px;
-    background:#ECEFF3;
-    color:#666;
+    background:var(--surface-variant);
+    color:var(--on-surface);
+    opacity:.7;
     font-weight:600;
     transition:.2s;
 }
 
 .tab.active{
-    background:#2962FF;
-    color:#fff;
+    background:var(--primary);
+    color:var(--on-primary);
 }
 
 /* Details */
