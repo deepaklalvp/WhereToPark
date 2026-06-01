@@ -77,48 +77,60 @@
     <section id="homePage" class="page">
         <div class="container">
 
-            <div class="card">
-                <h2>Find Parking</h2>
+            <div class="card" id="searchCard">
 
-                <select id="location">
-                    <option value="" selected disabled>Select District</option>
-                    <option value="Thiruvananthapuram">Thiruvananthapuram</option>
-                    <option value="Kollam">Kollam</option>
-                    <option value="Pathanamthitta">Pathanamthitta</option>
-                    <option value="Alappuzha">Alappuzha</option>
-                    <option value="Kottayam">Kottayam</option>
-                    <option value="Idukki">Idukki</option>
-                    <option value="Ernakulam">Ernakulam</option>
-                    <option value="Thrissur">Thrissur</option>
-                    <option value="Palakkad">Palakkad</option>
-                    <option value="Malappuram">Malappuram</option>
-                    <option value="Kozhikode">Kozhikode</option>
-                    <option value="Wayanad">Wayanad</option>
-                    <option value="Kannur">Kannur</option>
-                    <option value="Kasaragod">Kasaragod</option>
-                </select>
+    <div class="search-header">
+        <h2>Find Parking</h2>
 
-                <input type="date" id="date">
-                <select id="startTime"></select>
+        <button class="toggle-btn" onclick="toggleSearchCard()">
+            <span class="material-icons">keyboard_arrow_up</span>
+        </button>
+    </div>
 
-                    <select id="duration">
-                        <option value="1">1 Hour</option>
-                        <option value="2">2 Hours</option>
-                        <option value="3">3 Hours</option>
-                        <option value="6">6 Hours</option>
-                        <option value="12">12 Hours</option>
-                        <option value="24">24 Hours</option>
-                        <option value="48">48 Hours</option>
-                        <option value="72">72 Hours</option>
-                </select>
+    <div id="searchContent">
 
-                    <p id="endTimePreview"></p>
+        <select id="location">
+            <option value="" selected disabled>Select District</option>
+            <option value="Thiruvananthapuram">Thiruvananthapuram</option>
+            <option value="Kollam">Kollam</option>
+            <option value="Pathanamthitta">Pathanamthitta</option>
+            <option value="Alappuzha">Alappuzha</option>
+            <option value="Kottayam">Kottayam</option>
+            <option value="Idukki">Idukki</option>
+            <option value="Ernakulam">Ernakulam</option>
+            <option value="Thrissur">Thrissur</option>
+            <option value="Palakkad">Palakkad</option>
+            <option value="Malappuram">Malappuram</option>
+            <option value="Kozhikode">Kozhikode</option>
+            <option value="Wayanad">Wayanad</option>
+            <option value="Kannur">Kannur</option>
+            <option value="Kasaragod">Kasaragod</option>
+        </select>
 
-                <button onclick="loadParking()" class="icon-btn">
-    <span class="material-icons">search</span>
-    Find Parking
-</button>
-            </div>
+        <input type="date" id="date">
+
+        <select id="startTime"></select>
+
+        <select id="duration">
+            <option value="1">1 Hour</option>
+            <option value="2">2 Hours</option>
+            <option value="3">3 Hours</option>
+            <option value="6">6 Hours</option>
+            <option value="12">12 Hours</option>
+            <option value="24">24 Hours</option>
+            <option value="48">48 Hours</option>
+            <option value="72">72 Hours</option>
+        </select>
+
+        <p id="endTimePreview"></p>
+
+        <button onclick="loadParking()" class="icon-btn">
+            <span class="material-icons">search</span>
+            Find Parking
+        </button>
+
+    </div>
+</div>
 <div class="card map-card">
     <h3>Nearby Parking Map</h3>
     <div id="map"></div>
