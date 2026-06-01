@@ -118,23 +118,6 @@
             <div id="parkingList"></div>
 
         </div>
-
-        <div class="bottom-nav">
-    <button class="nav-btn active" onclick="showPage('homePage', this)">
-        <span class="material-icons">home</span>
-        <small>Home</small>
-    </button>
-
-    <button class="nav-btn" onclick="showPage('ordersPage', this)">
-        <span class="material-icons">receipt_long</span>
-        <small>Orders</small>
-    </button>
-
-    <button class="nav-btn" onclick="showPage('profilePage', this)">
-        <span class="material-icons">person</span>
-        <small>Profile</small>
-    </button>
-</div>
     </section>
 
 <!-- PARKING DETAILS PAGE -->
@@ -228,11 +211,6 @@
             </div>
         </div>
 
-        <div class="bottom-nav">
-            <button onclick="showPage('homePage')">Home</button>
-            <button>My Orders</button>
-            <button onclick="showPage('profilePage')">Profile</button>
-        </div>
     </section>
 
     <!-- PROFILE -->
@@ -255,13 +233,25 @@
                 </button>
 </div>
         </div>
-
-        <div class="bottom-nav">
-            <button onclick="showPage('homePage')">Home</button>
-            <button onclick="showPage('ordersPage')">My Orders</button>
-            <button>Profile</button>
-        </div>
     </section>
+
+  <div class="bottom-nav">
+    <button class="nav-btn active" onclick="showPage('homePage', this)">
+        <span class="material-icons">home</span>
+        <small>Home</small>
+    </button>
+
+    <button class="nav-btn" onclick="showPage('ordersPage', this)">
+        <span class="material-icons">receipt_long</span>
+        <small>Orders</small>
+    </button>
+
+    <button class="nav-btn" onclick="showPage('profilePage', this)">
+        <span class="material-icons">person</span>
+        <small>Profile</small>
+    </button>
+</div>
+    
 <!-- Firebase SDK -->
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
