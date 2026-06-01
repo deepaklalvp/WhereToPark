@@ -118,12 +118,11 @@ function showPage(pageId, btn) {
         page.classList.add("active");
     }
 
-    // Update active nav button
-    document
-        .querySelectorAll(".nav-btn")
-        .forEach(button => button.classList.remove("active"));
-
     if(btn){
+        document
+            .querySelectorAll(".nav-btn")
+            .forEach(button => button.classList.remove("active"));
+
         btn.classList.add("active");
     }
 }
