@@ -406,6 +406,10 @@ button:active{
     margin: 0;
 }
 
+#endTimePreview {
+    cursor: default;
+}
+
 .logo {
     width: 180px;
     height: auto;
