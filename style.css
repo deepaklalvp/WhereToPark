@@ -367,6 +367,45 @@ button:active{
     z-index: 1 !important;
 }
 
+.input-group {
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.input-group .material-icons {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--secondary);
+    font-size: 20px;
+    z-index: 2;
+}
+
+.input-group select,
+.input-group input {
+    padding-left: 45px;
+}
+
+.preview-group {
+    background: var(--surface-variant);
+    border-radius: 14px;
+    min-height: 52px;
+    display: flex;
+    align-items: center;
+    padding-left: 45px;
+    position: relative;
+    margin: 10px 0;
+}
+
+.preview-group .material-icons {
+    left: 14px;
+}
+
+.preview-group p {
+    margin: 0;
+}
+
 .logo {
     width: 220px;
     height: auto;
