@@ -382,6 +382,11 @@ button:active{
     z-index: 2;
 }
 
+.input-group.floating .material-icons {
+    top: 22px;
+    transform: none;
+}
+
 .input-group select,
 .input-group input {
     padding-left: 45px;
@@ -407,8 +412,6 @@ button:active{
 }
 
 #endTimePreview {
-    background: var(--primary-container);
-    color: var(--primary);
     font-weight: 600;
 }
 
@@ -429,10 +432,10 @@ button:active{
 
 .input-group.floating .field-label {
     position: absolute;
-    top: 6px;
+    top: 4px;
     left: 45px;
 
-    font-size: 11px;
+    font-size: 10px;
     font-weight: 600;
     color: var(--secondary);
 
@@ -443,8 +446,8 @@ button:active{
 
 .input-group.floating select,
 .input-group.floating input {
-    height: 60px;
-    padding-top: 20px;
+    height: 64px;
+    padding-top: 22px;
     padding-left: 45px;
 }
 
