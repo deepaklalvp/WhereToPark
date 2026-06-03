@@ -104,9 +104,11 @@
 
             <div id="searchContent">
 
-            <div class="input-group">
-                <span class="material-icons">location_on</span>
-                <select id="location">
+            <div class="field-group">
+                    <label class="field-label">Location</label>
+                    <div class="input-group">
+                        <span class="material-icons">location_on</span>
+                        <select id="location">
                     <option value="" selected disabled>Select District</option>
                     <option value="Thiruvananthapuram">Thiruvananthapuram</option>
                     <option value="Kollam">Kollam</option>
@@ -122,22 +124,31 @@
                     <option value="Wayanad">Wayanad</option>
                     <option value="Kannur">Kannur</option>
                     <option value="Kasaragod">Kasaragod</option>
-                 </select>
-                </div>
+              </select>
+            </div>
+        </div>
 
-                <div class="input-group">
-                    <span class="material-icons">calendar_today</span>
-                    <input type="date" id="date">
-                </div>
+               <div class="field-group">
+    <label class="field-label">Date</label>
+    <div class="input-group">
+        <span class="material-icons">calendar_today</span>
+        <input type="date" id="date">
+    </div>
+</div>
 
-                <div class="input-group">
-                    <span class="material-icons">schedule</span>
-                    <select id="startTime"></select>
-                </div>
+               <div class="field-group">
+    <label class="field-label">Start Time</label>
+    <div class="input-group">
+        <span class="material-icons">schedule</span>
+        <select id="startTime"></select>
+    </div>
+</div>
 
-                <div class="input-group">
-                    <span class="material-icons">timer</span>
-                    <select id="duration">
+                <div class="field-group">
+    <label class="field-label">Duration</label>
+    <div class="input-group">
+        <span class="material-icons">timer</span>
+        <select id="duration">
                         <option value="1" selected>1 Hour</option>
                         <option value="2">2 Hours</option>
                         <option value="3">3 Hours</option>
@@ -146,18 +157,21 @@
                         <option value="24">24 Hours</option>
                         <option value="48">48 Hours</option>
                         <option value="72">72 Hours</option>
-                     </select>
-                </div>
+                      </select>
+    </div>
+</div>
 
-                <div class="input-group">
-                          <span class="material-icons">event_available</span>
-                           <input
-                                type="text"
-                                id="endTimePreview"
-                                placeholder="End Time"
-                                readonly
-                            >
-                </div>
+               <div class="field-group">
+    <label class="field-label">End Time</label>
+    <div class="input-group">
+        <span class="material-icons">event_available</span>
+        <input
+            type="text"
+            id="endTimePreview"
+            readonly
+        >
+    </div>
+</div>
 
                 <button onclick="loadParking()" class="icon-btn">
                     <span class="material-icons">search</span>
