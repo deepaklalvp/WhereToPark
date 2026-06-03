@@ -556,3 +556,80 @@ window.addEventListener("DOMContentLoaded", () => {
     document.getElementById("duration")
         .addEventListener("change", updateEndTime);
 });
+
+function openEditProfile() {
+
+    const user = firebase.auth().currentUser;
+
+    if (!user) return;
+
+    db.collection("users")
+        .doc(user.uid)
+        .get()
+        .then((doc) => {
+
+            if (!doc.exists) return;
+
+            const data = doc.data();
+
+            document.getElementById("editName").value =
+                data.name || "";
+
+            document.getElementById("editPhone").value =
+                data.phone || "";
+
+            document.getElementById("editEmail").value =
+                data.email || "";
+
+            showPage("editProfilePage");
+        });
+}
+
+function updateProfile() {
+
+    const user = firebase.auth().currentUser;
+
+    if (!user) return;
+
+    const name =
+        document.getElementById("editName").value.trim();
+
+    const phone =
+        document.getElementById("editPhone").value.trim();
+
+    const email =
+        document.getElementById("editEmail").value.trim();
+
+    if (!name || !phone || !email) {
+        alert("Please fill all fields");
+        return;
+    }
+
+    db.collection("users")
+        .doc(user.uid)
+        .update({
+            name: name,
+            phone: phone,
+            email: email,
+            updatedAt:
+                firebase.firestore.FieldValue.serverTimestamp()
+        })
+        .then(() => {
+
+            document.getElementById("profileName")
+                .textContent = name;
+
+            document.getElementById("profilePhone")
+                .textContent = phone;
+
+            document.getElementById("profileEmail")
+                .textContent = email;
+
+            alert("Profile updated successfully");
+
+            showPage("profilePage");
+        })
+        .catch((error) => {
+            alert(error.message);
+        });
+}
