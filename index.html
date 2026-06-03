@@ -278,60 +278,75 @@
 
     </section>
 
-    <!-- PROFILE -->
-    <section id="profilePage" class="page">
-        <div class="container">
-            <div class="card">
-    <h2>Profile</h2>
+   <section id="profilePage" class="page">
+    <div class="container">
+        <div class="card profile-card">
 
-          <p>
-            <strong>Name:</strong>
-            <span id="profileName"></span>
-        </p>
+            <!-- Avatar -->
+            <div class="profile-header">
+                <img src="assets/avatar.png" alt="Profile" class="profile-avatar">
 
-        <p>
-            <strong>Phone:</strong>
-            <span id="profilePhone"></span>
-        </p>
+                <h2 id="profileName"></h2>
+                <p id="profilePhone"></p>
 
-        <p>
-            <strong>Email:</strong>
-            <span id="profileEmail"></span>
-        </p>
+                <button class="profile-btn edit-btn" onclick="showPage('editProfilePage')">
+                    <span class="material-icons">edit</span>
+                    Edit Profile
+                </button>
+            </div>
 
-    <br>
-<div class="profile-actions">
-    
-    <button class="profile-btn" onclick="showPage('termsPage')">
-        <span class="material-icons">gavel</span>
-        Terms & Conditions
-    </button>
+            <hr>
 
-    <button class="profile-btn" onclick="showPage('privacyPage')">
-        <span class="material-icons">privacy_tip</span>
-        Privacy Policy
-    </button>
+            <!-- Other Details -->
+            <div class="profile-details">
 
-    <button class="profile-btn" onclick="showPage('helpPage')">
-        <span class="material-icons">help</span>
-        Help & Support
-    </button>
+                <p>
+                    <strong>Email:</strong>
+                    <span id="profileEmail"></span>
+                </p>
 
-    <button class="profile-btn theme-btn" onclick="toggleTheme()">
-        <span class="material-icons">dark_mode</span>
-        Light / Dark Theme
-    </button>
+                <!-- Add more details here -->
+                <p>
+                    <strong>Address:</strong>
+                    <span id="profileAddress"></span>
+                </p>
 
-    <button class="profile-btn logout-btn" onclick="logout()">
-        <span class="material-icons">logout</span>
-        Logout
-    </button>
+            </div>
 
-</div>
-</div>
-          </div>
+            <br>
+
+            <div class="profile-actions">
+
+                <button class="profile-btn" onclick="showPage('termsPage')">
+                    <span class="material-icons">gavel</span>
+                    Terms & Conditions
+                </button>
+
+                <button class="profile-btn" onclick="showPage('privacyPage')">
+                    <span class="material-icons">privacy_tip</span>
+                    Privacy Policy
+                </button>
+
+                <button class="profile-btn" onclick="showPage('helpPage')">
+                    <span class="material-icons">help</span>
+                    Help & Support
+                </button>
+
+                <button class="profile-btn theme-btn" onclick="toggleTheme()">
+                    <span class="material-icons">dark_mode</span>
+                    Light / Dark Theme
+                </button>
+
+                <button class="profile-btn logout-btn" onclick="logout()">
+                    <span class="material-icons">logout</span>
+                    Logout
+                </button>
+
+            </div>
+
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- terms page -->
 <section id="termsPage" class="page">
