@@ -407,7 +407,9 @@ button:active{
 }
 
 #endTimePreview {
-    cursor: default;
+    background: var(--primary-container);
+    color: var(--primary);
+    font-weight: 600;
 }
 
 .logo {
