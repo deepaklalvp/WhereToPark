@@ -475,14 +475,13 @@ function generateTimeSlots() {
 
         for (let m of [0, 15, 30, 45]) {
 
-            // Only filter when selected date is TODAY
             if (selectedDate === today) {
 
                 const slotTime = new Date();
                 slotTime.setHours(h, m, 0, 0);
 
                 if (slotTime <= now) {
-                    continue; // skip past times
+                    continue;
                 }
             }
 
@@ -496,6 +495,9 @@ function generateTimeSlots() {
             `;
         }
     }
+
+    // NEW: calculate end time using the first available slot
+    updateEndTime();
 }
 
 function toggleTheme() {
@@ -520,20 +522,25 @@ function updateEndTime() {
     const start = document.getElementById("startTime").value;
     const duration = parseInt(document.getElementById("duration").value);
 
-    if (!start) return;
+    if (!start) {
+        document.getElementById("endTimePreview").value = "";
+        return;
+    }
 
     const [h, m] = start.split(":").map(Number);
 
     const startDate = new Date();
     startDate.setHours(h, m, 0, 0);
 
-    const endDate = new Date(startDate.getTime() + duration * 60 * 60 * 1000);
+    const endDate = new Date(
+        startDate.getTime() + duration * 60 * 60 * 1000
+    );
 
     const endH = String(endDate.getHours()).padStart(2, "0");
     const endM = String(endDate.getMinutes()).padStart(2, "0");
 
     document.getElementById("endTimePreview").value =
-    `${endH}:${endM}`;
+        `${endH}:${endM}`;
 }
 
 window.addEventListener("DOMContentLoaded", () => {
