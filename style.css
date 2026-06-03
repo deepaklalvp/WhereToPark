@@ -407,8 +407,8 @@ button:active{
 }
 
 .logo {
-    width: 220px;
+    width: 180px;
     height: auto;
     display: block;
-    margin: 0 auto;
+    margin: 0 auto 20px;
 }
