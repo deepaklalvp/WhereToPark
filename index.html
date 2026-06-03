@@ -277,43 +277,36 @@
         </div>
 
     </section>
-
-   <section id="profilePage" class="page">
+        
+<!-- PROFILE PAGE -->
+<section id="profilePage" class="page">
     <div class="container">
         <div class="card profile-card">
 
-            <!-- Avatar -->
             <div class="profile-header">
+
                 <img src="assets/avatar.png" alt="Profile" class="profile-avatar">
 
                 <h2 id="profileName"></h2>
-                <p id="profilePhone"></p>
 
-                <button class="profile-btn edit-btn" onclick="showPage('editProfilePage')">
-                    <span class="material-icons">edit</span>
-                    Edit Profile
-                </button>
-            </div>
+                <p class="profile-meta" id="profilePhone"></p>
 
-            <hr>
-
-            <!-- Other Details -->
-            <div class="profile-details">
-
-                <p>
-                    <strong>Email:</strong>
+                <p class="profile-meta">
                     <span id="profileEmail"></span>
                 </p>
 
-                <!-- Add more details here -->
-                <p>
-                    <strong>Address:</strong>
+                <p class="profile-meta">
                     <span id="profileAddress"></span>
                 </p>
 
+                <button class="edit-btn" onclick="showPage('editProfilePage')">
+                    <span class="material-icons">edit</span>
+                    Edit Profile
+                </button>
+
             </div>
 
-            <br>
+            <hr class="profile-divider">
 
             <div class="profile-actions">
 
