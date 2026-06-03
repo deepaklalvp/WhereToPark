@@ -99,7 +99,7 @@ select{
     width:100%;
     height:52px;
     padding:14px 16px;
-    margin:10px 0;
+    margin:0;
     border:none;
     border-radius:14px;
     background:var(--surface-variant);
@@ -369,7 +369,7 @@ button:active{
 
 .input-group {
     position: relative;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 }
 
 .input-group .material-icons {
@@ -443,7 +443,9 @@ button:active{
 
 .input-group.floating select,
 .input-group.floating input {
-    padding-top: 18px;
+    height: 60px;
+    padding-top: 20px;
+    padding-left: 45px;
 }
 
 .logo {
