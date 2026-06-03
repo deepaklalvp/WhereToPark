@@ -455,3 +455,41 @@ button:active{
     display: block;
     margin: 0 auto 20px;
 }
+
+.profile-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.profile-avatar {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 12px;
+    border: 3px solid #ddd;
+}
+
+.profile-header h2 {
+    margin: 5px 0;
+    font-size: 22px;
+}
+
+.profile-header p {
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.edit-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.profile-details {
+    margin-top: 15px;
+}
+
+.profile-details p {
+    margin: 12px 0;
+}
