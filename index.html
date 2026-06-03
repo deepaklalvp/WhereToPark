@@ -104,11 +104,104 @@
 
             <div id="searchContent">
 
+              <!-- HOME PAGE -->
+<section id="homePage" class="page">
+    <div class="container">
+            <div class="logo-container">
+                <img src="images/logo.png" alt="WhereToPark Logo" class="logo">
+            </div>
+        <!-- SEARCH CARD -->
+        <div class="card" id="searchCard">
+
+            <div class="search-header" onclick="toggleSearchCard()">
+                <h2>Find Parking</h2>
+
+                <span class="material-icons" id="searchIcon">
+                    keyboard_arrow_up
+                </span>
+            </div>
+
+            <div id="searchContent">
+
             <div class="field-group">
                     <label class="field-label">Location</label>
                     <div class="input-group">
                         <span class="material-icons">location_on</span>
                         <select id="location">
+                    <option value="" selected disabled>Select District</option>
+                    <option value="Thiruvananthapuram">Thiruvananthapuram</option>
+                    <option value="Kollam">Kollam</option>
+                    <option value="Pathanamthitta">Pathanamthitta</option>
+                    <option value="Alappuzha">Alappuzha</option>
+                    <option value="Kottayam">Kottayam</option>
+                    <option value="Idukki">Idukki</option>
+                    <option value="Ernakulam">Ernakulam</option>
+                    <option value="Thrissur">Thrissur</option>
+                    <option value="Palakkad">Palakkad</option>
+                    <option value="Malappuram">Malappuram</option>
+                    <option value="Kozhikode">Kozhikode</option>
+                    <option value="Wayanad">Wayanad</option>
+                    <option value="Kannur">Kannur</option>
+                    <option value="Kasaragod">Kasaragod</option>
+              </select>
+</div>
+
+            <div class="input-group floating">
+    <label class="field-label">Date</label>
+    <span class="material-icons">calendar_today</span>
+    <input type="date" id="date">
+</div>
+
+               <div class="input-group floating">
+    <label class="field-label">Start Time</label>
+    <span class="material-icons">schedule</span>
+    <select id="startTime"></select>
+</div>
+
+              <div class="input-group floating">
+    <label class="field-label">Duration</label>
+    <span class="material-icons">timer</span>
+    <select id="duration">
+                        <option value="1" selected>1 Hour</option>
+                        <option value="2">2 Hours</option>
+                        <option value="3">3 Hours</option>
+                        <option value="6">6 Hours</option>
+                        <option value="12">12 Hours</option>
+                        <option value="24">24 Hours</option>
+                        <option value="48">48 Hours</option>
+                        <option value="72">72 Hours</option>
+                      </select>
+</div>
+
+              <div class="input-group floating">
+    <label class="field-label">End Time</label>
+    <span class="material-icons">event_available</span>
+    <input
+        type="text"
+        id="endTimePreview"
+        readonly
+    >
+</div>
+
+                <button onclick="loadParking()" class="icon-btn">
+                    <span class="material-icons">search</span>
+                    Find Parking
+                </button>
+
+            </div>
+        </div>
+
+        <!-- MAP -->
+        <div class="card map-card">
+            <h3>Nearby Parking Map</h3>
+            <div id="map"></div>
+        </div>
+
+        <!-- RESULTS -->
+        <div id="parkingList"></div>
+
+    </div>
+</section>
                     <option value="" selected disabled>Select District</option>
                     <option value="Thiruvananthapuram">Thiruvananthapuram</option>
                     <option value="Kollam">Kollam</option>
