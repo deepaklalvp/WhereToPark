@@ -295,7 +295,7 @@
                     <span id="profileEmail"></span>
                 </p>
 
-                <button class="edit-btn" onclick="showPage('editProfilePage')">
+                <button class="edit-btn" onclick="openEditProfile()">
                     <span class="material-icons">edit</span>
                     Edit Profile
                 </button>
@@ -336,7 +336,34 @@
         </div>
     </div>
 </section>
+        
+        <!-- EDIT PROFILE PAGE -->
+<section id="editProfilePage" class="page">
+    <div class="container">
+        <div class="card">
 
+            <h2>Edit Profile</h2>
+
+            <input type="text" id="editName" placeholder="Name">
+
+            <br><br>
+
+            <input type="text" id="editPhone" placeholder="Phone">
+
+            <br><br>
+
+            <input type="email" id="editEmail" placeholder="Email">
+
+            <br><br>
+
+            <button onclick="updateProfile()">
+                Save Changes
+            </button>
+
+        </div>
+    </div>
+</section>
+        
     <!-- terms page -->
 <section id="termsPage" class="page">
     <div class="container">
