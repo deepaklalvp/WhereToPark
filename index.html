@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+        <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -104,7 +104,10 @@
 
             <div id="searchContent">
 
+            <div class="input-group">
+                <span class="material-icons">location_on</span>
                 <select id="location">
+                    <option value="" selected disabled>Select District</option>
                     <option value="" selected disabled>Select District</option>
                     <option value="Thiruvananthapuram">Thiruvananthapuram</option>
                     <option value="Kollam">Kollam</option>
@@ -120,24 +123,37 @@
                     <option value="Wayanad">Wayanad</option>
                     <option value="Kannur">Kannur</option>
                     <option value="Kasaragod">Kasaragod</option>
-                </select>
+                 </select>
+                </div>
 
-                <input type="date" id="date">
+                <div class="input-group">
+                    <span class="material-icons">calendar_today</span>
+                    <input type="date" id="date">
+                </div>
 
-                <select id="startTime"></select>
+                <div class="input-group">
+                    <span class="material-icons">schedule</span>
+                    <select id="startTime"></select>
+                </div>
 
-                <select id="duration">
-                    <option value="1">1 Hour</option>
-                    <option value="2">2 Hours</option>
-                    <option value="3">3 Hours</option>
-                    <option value="6">6 Hours</option>
-                    <option value="12">12 Hours</option>
-                    <option value="24">24 Hours</option>
-                    <option value="48">48 Hours</option>
-                    <option value="72">72 Hours</option>
-                </select>
+                <div class="input-group">
+                    <span class="material-icons">timer</span>
+                    <select id="duration">
+                        <option value="1">1 Hour</option>
+                        <option value="2">2 Hours</option>
+                        <option value="3">3 Hours</option>
+                        <option value="6">6 Hours</option>
+                        <option value="12">12 Hours</option>
+                        <option value="24">24 Hours</option>
+                        <option value="48">48 Hours</option>
+                        <option value="72">72 Hours</option>
+                     </select>
+                </div>
 
-                <p id="endTimePreview"></p>
+                <div class="input-group preview-group">
+                    <span class="material-icons">event_available</span>
+                    <p id="endTimePreview"></p>
+                </div>
 
                 <button onclick="loadParking()" class="icon-btn">
                     <span class="material-icons">search</span>
