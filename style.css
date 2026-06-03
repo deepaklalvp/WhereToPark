@@ -322,12 +322,6 @@ button:active{
     z-index:1;
 }
 
-.search-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
 .toggle-btn {
     background: transparent;
     border: none;
@@ -349,10 +343,6 @@ button:active{
 
 #searchIcon {
     transition: 0.3s;
-}
-
-#searchCard.collapsed #searchContent {
-    display: none;
 }
 
 /* Leaflet fix */
@@ -462,12 +452,13 @@ button:active{
 }
 
 .profile-avatar {
-    width: 90px;
-    height: 90px;
+    width: 110px;
+    height: 110px;
     border-radius: 50%;
     object-fit: cover;
     margin-bottom: 12px;
-    border: 3px solid #ddd;
+    border: 3px solid var(--surface-variant);
+    box-shadow: 0 4px 12px rgba(0,0,0,.15);
 }
 
 .profile-header h2 {
@@ -476,20 +467,29 @@ button:active{
 }
 
 .profile-header p {
-    color: #666;
+    color: var(--secondary);
     margin-bottom: 15px;
 }
 
 .edit-btn {
-    display: inline-flex;
+    width: fit-content;
+    margin: 0 auto;
+    display: flex;
     align-items: center;
     gap: 6px;
+    padding: 10px 18px;
 }
-
+.profile-card {
+    overflow: hidden;
+}
 .profile-details {
     margin-top: 15px;
 }
 
 .profile-details p {
-    margin: 12px 0;
+    margin: 14px 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--surface-variant);
+    word-break: break-word;
 }
+
