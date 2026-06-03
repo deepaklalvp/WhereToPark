@@ -366,3 +366,10 @@ button:active{
 .leaflet-control {
     z-index: 1 !important;
 }
+
+.logo {
+    width: 220px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
