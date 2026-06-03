@@ -412,18 +412,38 @@ button:active{
     font-weight: 600;
 }
 
-.field-group {
-    margin-bottom: 12px;
-}
 
 .field-label {
     display: block;
     margin-bottom: 6px;
     padding-left: 4px;
-
     font-size: 13px;
     font-weight: 600;
     color: var(--secondary);
+}
+
+/* ADD BELOW THIS */
+.input-group.floating {
+    position: relative;
+}
+
+.input-group.floating .field-label {
+    position: absolute;
+    top: 6px;
+    left: 45px;
+
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--secondary);
+
+    margin: 0;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.input-group.floating select,
+.input-group.floating input {
+    padding-top: 18px;
 }
 
 .logo {
