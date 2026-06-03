@@ -418,8 +418,9 @@ button:active{
 
 .field-label {
     display: block;
-    margin-bottom: 4px;
+    margin-bottom: 6px;
     padding-left: 4px;
+
     font-size: 13px;
     font-weight: 600;
     color: var(--secondary);
