@@ -626,3 +626,4 @@ function updateProfile() {
             alert(error.message);
         });
 }
+
