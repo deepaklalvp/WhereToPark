@@ -597,10 +597,7 @@ function updateProfile() {
     const phone =
         document.getElementById("editPhone").value.trim();
 
-    const email =
-        document.getElementById("editEmail").value.trim();
-
-    if (!name || !phone || !email) {
+    if (!name || !phone) {
         alert("Please fill all fields");
         return;
     }
@@ -610,7 +607,6 @@ function updateProfile() {
         .update({
             name: name,
             phone: phone,
-            email: email,
             updatedAt:
                 firebase.firestore.FieldValue.serverTimestamp()
         })
@@ -621,9 +617,6 @@ function updateProfile() {
 
             document.getElementById("profilePhone")
                 .textContent = phone;
-
-            document.getElementById("profileEmail")
-                .textContent = email;
 
             alert("Profile updated successfully");
 
