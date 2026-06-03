@@ -532,8 +532,8 @@ function updateEndTime() {
     const endH = String(endDate.getHours()).padStart(2, "0");
     const endM = String(endDate.getMinutes()).padStart(2, "0");
 
-    document.getElementById("endTimePreview").innerText =
-        `Ends at: ${endH}:${endM}`;
+    document.getElementById("endTimePreview").value =
+    `${endH}:${endM}`;
 }
 
 window.addEventListener("DOMContentLoaded", () => {
