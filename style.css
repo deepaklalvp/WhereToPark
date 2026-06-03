@@ -412,6 +412,19 @@ button:active{
     font-weight: 600;
 }
 
+.field-group {
+    margin-bottom: 12px;
+}
+
+.field-label {
+    display: block;
+    margin-bottom: 4px;
+    padding-left: 4px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--secondary);
+}
+
 .logo {
     width: 180px;
     height: auto;
