@@ -627,16 +627,14 @@ function updateProfile() {
         });
 }
 
-function selectPayMethod(type){
+function selectPayMethod(type, el){
 
-    // tabs
     document.querySelectorAll('.pay-tab').forEach(btn=>{
         btn.classList.remove('active');
     });
 
-    event.target.classList.add('active');
+    el.classList.add('active');
 
-    // boxes
     document.querySelectorAll('.pay-box').forEach(box=>{
         box.classList.remove('active');
     });
@@ -653,4 +651,5 @@ function selectPayMethod(type){
         document.getElementById('walletBox').classList.add('active');
     }
 }
+
 
