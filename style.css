@@ -566,7 +566,7 @@ button:active{
     transform:scale(0.95);
 }
 
-.payment-options{
+.payment-tabs{
     display:flex !important;
     flex-direction:row !important;
     flex-wrap:nowrap;
