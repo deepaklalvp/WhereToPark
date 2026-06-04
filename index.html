@@ -215,20 +215,54 @@
 
             <div class="page-header">
                 <button class="back-btn" onclick="showPage('detailsPage')">
-                    <span class="material-icons">arrow_back</span>
+                    &#8249;
                 </button>
                 <h2>Payment</h2>
             </div>
 
-            <input type="text" placeholder="Card Holder Name">
-            <input type="text" placeholder="Card Number">
-            <input type="text" placeholder="CVV">
+            <!-- PAYMENT OPTIONS -->
+            <div class="payment-options">
 
-            <div style="margin-top:15px;">
-                <button onclick="confirmBooking()">
-                    Pay Now
+                <button class="pay-tab active" onclick="selectPayMethod('upi')">
+                    Pay using UPI
                 </button>
+
+                <button class="pay-tab" onclick="selectPayMethod('card')">
+                    Debit / Credit Card
+                </button>
+
+                <button class="pay-tab" onclick="selectPayMethod('wallet')">
+                    Wallet
+                </button>
+
             </div>
+
+            <!-- UPI -->
+            <div id="upiBox" class="pay-box active">
+                <input type="text" placeholder="Enter UPI ID (example@upi)">
+            </div>
+
+            <!-- CARD -->
+            <div id="cardBox" class="pay-box">
+                <input type="text" placeholder="Card Holder Name">
+                <input type="text" placeholder="Card Number">
+                <input type="text" placeholder="CVV">
+            </div>
+
+            <!-- WALLET -->
+            <div id="walletBox" class="pay-box">
+                <p>Select wallet:</p>
+
+                <select>
+                    <option>Paytm Wallet</option>
+                    <option>Google Pay Balance</option>
+                    <option>PhonePe Wallet</option>
+                </select>
+            </div>
+
+            <button onclick="confirmBooking()" style="margin-top:15px;">
+                Pay Now
+            </button>
 
         </div>
     </div>
