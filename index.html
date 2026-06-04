@@ -220,23 +220,22 @@
                 <h2>Payment</h2>
             </div>
 
-            <!-- PAYMENT OPTIONS -->
-            <div class="payment-options">
+          <!-- PAYMENT OPTIONS (ROW) -->
+<div class="payment-tabs">
 
-                <button class="pay-tab active" onclick="selectPayMethod('upi')">
-                    Pay using UPI
-                </button>
+    <button class="pay-tab active" onclick="selectPayMethod('upi', this)">
+        UPI
+    </button>
 
-                <button class="pay-tab" onclick="selectPayMethod('card')">
-                    Debit / Credit Card
-                </button>
+    <button class="pay-tab" onclick="selectPayMethod('card', this)">
+        Card
+    </button>
 
-                <button class="pay-tab" onclick="selectPayMethod('wallet')">
-                    Wallet
-                </button>
+    <button class="pay-tab" onclick="selectPayMethod('wallet', this)">
+        Wallet
+    </button>
 
-            </div>
-
+</div>
             <!-- UPI -->
             <div id="upiBox" class="pay-box active">
                 <input type="text" placeholder="Enter UPI ID (example@upi)">
