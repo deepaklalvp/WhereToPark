@@ -199,7 +199,8 @@
             <div id="detailsContent"></div>
 
             <div style="margin-top:15px;">
-                <button onclick="showPage('paymentPage')">
+                <button onclick="showPage('paymentPage')" class="icon-btn">
+                    <span class="material-icons">payment</span>
                     Book Now
                 </button>
             </div>
@@ -259,8 +260,9 @@
                 </select>
             </div>
 
-            <button onclick="confirmBooking()" style="margin-top:15px;">
-                Pay Now
+            <button onclick="confirmBooking()" class="icon-btn" style="margin-top:15px;">
+                    <span class="material-icons">payment</span>
+                    Pay Now
             </button>
 
         </div>
@@ -276,7 +278,8 @@
 
                 <div id="confirmationContent"></div>
 
-                <button onclick="showPage('homePage')">
+                <button onclick="showPage('homePage')" class="icon-btn">
+                    <span class="material-icons">home</span>
                     Back To Home
                 </button>
 
@@ -292,12 +295,14 @@
 
                  <div class="tabs">
                     <button class="tab active" id="upcomingTab" onclick="setTab('upcoming')">
-                    Upcoming
-                    </button>
+    <span class="material-icons">event</span>
+    Upcoming
+</button>
 
-                    <button class="tab" id="completedTab" onclick="setTab('completed')">
-                    Completed
-                    </button>
+<button class="tab" id="completedTab" onclick="setTab('completed')">
+    <span class="material-icons">check_circle</span>
+    Completed
+</button>
                 </div>
 
                 <div id="orderHistory">
