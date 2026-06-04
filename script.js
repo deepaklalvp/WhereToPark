@@ -46,6 +46,7 @@ function login() {
 
         document.getElementById("loginError").innerHTML = message;
     });
+}   // <-- THIS closes login()
 
 function register() {
 
@@ -143,6 +144,7 @@ firebase.auth().onAuthStateChanged((user) => {
         showPage("loginPage");
     }
 });
+
 
 function logout() {
 
