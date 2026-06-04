@@ -565,3 +565,39 @@ button:active{
 .back-btn:active{
     transform:scale(0.95);
 }
+
+.payment-options{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    margin:15px 0;
+}
+
+.pay-tab{
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:12px;
+
+    background:var(--surface-variant);
+    color:var(--on-surface);
+
+    font-weight:600;
+    cursor:pointer;
+
+    transition:0.2s;
+}
+
+.pay-tab.active{
+    background:var(--primary-container);
+    color:var(--primary);
+}
+
+.pay-box{
+    display:none;
+    margin-top:10px;
+}
+
+.pay-box.active{
+    display:block;
+}
