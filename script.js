@@ -23,33 +23,44 @@ function login() {
 }
 function register() {
 
-    const name =
-        document.getElementById("regName").value.trim();
+    const name = document.getElementById("regName").value.trim();
+    const phone = document.getElementById("regPhone").value.trim();
+    const email = document.getElementById("regEmail").value.trim();
+    const password = document.getElementById("regPassword").value.trim();
 
-    const phone =
-        document.getElementById("regPhone").value.trim();
+    const errorBox = document.getElementById("regError");
 
-    const email =
-        document.getElementById("regEmail").value.trim();
+    // Clear previous error
+    errorBox.innerHTML = "";
 
-    const password =
-        document.getElementById("regPassword").value.trim();
-
-    console.log("Name:", name);
-console.log("Phone:", phone);
-console.log("Email:", email);
-
+    // 1. Required fields check
     if (!name || !phone || !email || !password) {
+        errorBox.innerHTML = "All fields are required";
+        return;
+    }
 
-        document.getElementById("regError").innerHTML =
-            "Please fill all fields";
+    // 2. Email validation
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(email)) {
+        errorBox.innerHTML = "Please enter a valid email address";
+        return;
+    }
 
+    // 3. Phone validation (10 digits example for India)
+    const phonePattern = /^[0-9]{10}$/;
+    if (!phonePattern.test(phone)) {
+        errorBox.innerHTML = "Please enter a valid 10-digit phone number";
+        return;
+    }
+
+    // 4. Password strength (minimum 6 chars for Firebase)
+    if (password.length < 6) {
+        errorBox.innerHTML = "Password must be at least 6 characters";
         return;
     }
 
     firebase.auth()
         .createUserWithEmailAndPassword(email, password)
-
         .then(async (userCredential) => {
 
             const uid = userCredential.user.uid;
@@ -57,23 +68,18 @@ console.log("Email:", email);
             await db.collection("users")
                 .doc(uid)
                 .set({
-                    name: name,
-                    phone: phone,
-                    email: email,
-                    createdAt:
-                        firebase.firestore.FieldValue.serverTimestamp()
+                    name,
+                    phone,
+                    email,
+                    createdAt: firebase.firestore.FieldValue.serverTimestamp()
                 });
 
             showPage("homePage");
         })
-
         .catch((error) => {
-
-            document.getElementById("regError").innerHTML =
-                error.message;
+            errorBox.innerHTML = error.message;
         });
 }
-
 firebase.auth().onAuthStateChanged((user) => {
 
     if (user) {
