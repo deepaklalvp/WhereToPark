@@ -12,15 +12,41 @@ function login() {
     }
 
     firebase.auth()
-        .signInWithEmailAndPassword(email, password)
-        .then(() => {
-            showPage("homePage");
-        })
-        .catch((error) => {
-            document.getElementById("loginError").innerHTML =
-                error.message;
-        });
-}
+    .signInWithEmailAndPassword(email, password)
+    .then(() => {
+        showPage("homePage");
+    })
+    .catch((error) => {
+
+        let message = "Login failed";
+
+        switch (error.code) {
+
+            case "auth/user-not-found":
+            case "auth/wrong-password":
+            case "auth/invalid-credential":
+                message = "Invalid credentials";
+                break;
+
+            case "auth/invalid-email":
+                message = "Invalid email format";
+                break;
+
+            case "auth/user-disabled":
+                message = "This account has been disabled";
+                break;
+
+            case "auth/too-many-requests":
+                message = "Too many attempts. Try again later";
+                break;
+
+            default:
+                message = "Login failed. Please try again";
+        }
+
+        document.getElementById("loginError").innerHTML = message;
+    });
+
 function register() {
 
     const name = document.getElementById("regName").value.trim();
