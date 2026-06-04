@@ -514,3 +514,31 @@ button:active{
     cursor: not-allowed;
 }
 
+/* Back Button */
+.back-btn{
+    width:auto;
+    margin:0 0 15px 0;
+    padding:0;
+
+    background:none;
+    border:none;
+
+    color:var(--on-surface);
+    font-size:16px;
+    font-weight:600;
+
+    display:flex;
+    align-items:center;
+    gap:4px;
+
+    cursor:pointer;
+}
+
+.back-btn:hover{
+    background:none;
+    color:var(--primary);
+}
+
+.back-btn:active{
+    transform:none;
+}
