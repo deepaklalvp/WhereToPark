@@ -582,14 +582,16 @@ button:active{
 
 .pay-tab{
     flex:1;
-    min-width:0;   /* important fix */
+    min-width:0;
     width:auto !important;
 
     display:flex;
     align-items:center;
     justify-content:center;
 
-    padding:10px;
+    text-align:center;   /* important add */
+
+    padding:12px 10px;   /* slightly more balanced */
 
     border:none;
     border-radius:10px;
@@ -599,6 +601,7 @@ button:active{
 
     font-weight:600;
     font-size:14px;
+    line-height:1;       /* important fix */
 
     cursor:pointer;
 }
