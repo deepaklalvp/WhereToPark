@@ -260,7 +260,8 @@ if (!card.classList.contains("collapsed")) {
                         <p>Available Slots: ${p.availableSlots}</p>
                         <p>₹${p.pricePerHour}/hour</p>
                         <p>Total: ₹${totalPrice}</p>
-                        <button onclick="selectParking('${doc.id}', '${p.name}', ${totalPrice})">
+                        <button onclick="selectParking('${doc.id}', '${p.name}', ${totalPrice})" class="icon-btn">
+                            <span class="material-icons">local_parking</span>
                             Book Now
                         </button>
                     </div>
