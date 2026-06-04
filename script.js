@@ -627,3 +627,30 @@ function updateProfile() {
         });
 }
 
+function selectPayMethod(type){
+
+    // tabs
+    document.querySelectorAll('.pay-tab').forEach(btn=>{
+        btn.classList.remove('active');
+    });
+
+    event.target.classList.add('active');
+
+    // boxes
+    document.querySelectorAll('.pay-box').forEach(box=>{
+        box.classList.remove('active');
+    });
+
+    if(type === 'upi'){
+        document.getElementById('upiBox').classList.add('active');
+    }
+
+    if(type === 'card'){
+        document.getElementById('cardBox').classList.add('active');
+    }
+
+    if(type === 'wallet'){
+        document.getElementById('walletBox').classList.add('active');
+    }
+}
+
