@@ -340,29 +340,26 @@
 <section id="editProfilePage" class="page">
     <div class="container">
         <div class="card">
+
+            <div class="page-header">
                 <button class="back-btn" onclick="showPage('profilePage')">
-                    &#8249; Back
+                    &#8249;
                 </button>
-            <h2>Edit Profile</h2>
+                <h2>Edit Profile</h2>
+            </div>
 
-           <input type="text" id="editName" placeholder="Name">
+            <input type="text" id="editName" placeholder="Name">
 
-<br><br>
+            <input type="text" id="editPhone" placeholder="Phone">
 
-<input type="text" id="editPhone" placeholder="Phone">
+            <input type="email"
+                   id="editEmail"
+                   placeholder="Email"
+                   disabled>
 
-<br><br>
-
-<input type="email"
-       id="editEmail"
-       placeholder="Email"
-       disabled>
-
-<br><br>
-
-<button onclick="updateProfile()">
-    Save Changes
-</button>
+            <button onclick="updateProfile()">
+                Save Changes
+            </button>
 
         </div>
     </div>
@@ -372,10 +369,14 @@
 <section id="termsPage" class="page">
     <div class="container">
         <div class="card">
+
+            <div class="page-header">
                 <button class="back-btn" onclick="showPage('profilePage')">
-    &#8249; 
-</button>
-            <h2>Terms & Conditions</h2>
+                    &#8249;
+                </button>
+                <h2>Terms & Conditions</h2>
+            </div>
+
             <p>Your terms content here...</p>
 
         </div>
@@ -384,30 +385,38 @@
     
 <!-- privacy page -->
     <section id="privacyPage" class="page">
-    <div class="card">
+    <div class="container">
+        <div class="card">
 
-    <button class="back-btn" onclick="showPage('profilePage')">
-        &#8249;
-    </button>
+            <div class="page-header">
+                <button class="back-btn" onclick="showPage('profilePage')">
+                    &#8249;
+                </button>
+                <h2>Privacy Policy</h2>
+            </div>
 
-    <h2>Privacy Policy</h2>
-    <p>Your privacy policy here...</p>
+            <p>Your privacy policy here...</p>
 
-</div>
+        </div>
+    </div>
 </section>
 
     <!-- help page -->
-    <section id="helpPage" class="page">
-    <div class="card">
+   <section id="helpPage" class="page">
+    <div class="container">
+        <div class="card">
 
-    <button class="back-btn" onclick="showPage('profilePage')">
-        &#8249;
-    </button>
+            <div class="page-header">
+                <button class="back-btn" onclick="showPage('profilePage')">
+                    &#8249;
+                </button>
+                <h2>Help & Support</h2>
+            </div>
 
-    <h2>Help & Support</h2>
-    <p>Contact: support@example.com</p>
+            <p>Contact: support@example.com</p>
 
-</div>
+        </div>
+    </div>
 </section>
 
     
