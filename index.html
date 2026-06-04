@@ -224,17 +224,20 @@
           <!-- PAYMENT OPTIONS (ROW) -->
 <div class="payment-tabs">
 
-    <button class="pay-tab active" onclick="selectPayMethod('upi', this)">
-        UPI
-    </button>
+   <button class="pay-tab active" onclick="selectPayMethod('upi', this)">
+    <span class="material-icons">qr_code</span>
+    UPI
+</button>
 
-    <button class="pay-tab" onclick="selectPayMethod('card', this)">
-        Card
-    </button>
+<button class="pay-tab" onclick="selectPayMethod('card', this)">
+    <span class="material-icons">credit_card</span>
+    Card
+</button>
 
-    <button class="pay-tab" onclick="selectPayMethod('wallet', this)">
-        Wallet
-    </button>
+<button class="pay-tab" onclick="selectPayMethod('wallet', this)">
+    <span class="material-icons">account_balance_wallet</span>
+    Wallet
+</button>
 
 </div>
             <!-- UPI -->
@@ -393,9 +396,10 @@
                    placeholder="Email"
                    disabled>
 
-            <button onclick="updateProfile()">
-                Save Changes
-            </button>
+            <button onclick="updateProfile()" class="icon-btn">
+    <span class="material-icons">save</span>
+    Save Changes
+</button>
 
         </div>
     </div>
