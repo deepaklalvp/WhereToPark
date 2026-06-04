@@ -557,6 +557,11 @@ button:active{
     transform:scale(1.05);
 }
 
+.back-btn .material-icons{
+    font-size:22px;
+    line-height:1;
+}
+
 .back-btn:active{
     transform:scale(0.95);
 }
