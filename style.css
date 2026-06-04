@@ -527,21 +527,38 @@ button:active{
 }
 
 .back-btn{
-    width:auto;
+    width:42px;
+    height:42px;
     margin:0;
-    padding:0;
-    background:none;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
     border:none;
+    border-radius:50%;
+
+    background:var(--surface-variant);
     color:var(--on-surface);
-    font-size:28px;
+
+    font-size:32px;
+    font-weight:700;
+    line-height:1;
+
     cursor:pointer;
+
+    box-shadow:
+        0 2px 8px rgba(0,0,0,0.12);
+
+    transition:0.2s;
 }
 
 .back-btn:hover{
-    background:none;
+    background:var(--primary-container);
     color:var(--primary);
+    transform:scale(1.05);
 }
 
 .back-btn:active{
-    transform:none;
+    transform:scale(0.95);
 }
