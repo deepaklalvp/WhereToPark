@@ -527,9 +527,8 @@ button:active{
 }
 
 .back-btn{
-    width:42px;
-    height:42px;
-    margin:0;
+    width:44px;
+    height:44px;
 
     display:flex;
     align-items:center;
@@ -541,18 +540,17 @@ button:active{
     background:var(--surface-variant);
     color:var(--on-surface);
 
-    font-size:32px;
-    font-weight:700;
-    line-height:1;
-
     cursor:pointer;
 
-    box-shadow:
-        0 2px 8px rgba(0,0,0,0.12);
+    box-shadow:0 2px 8px rgba(0,0,0,0.12);
 
     transition:0.2s;
-}
 
+    /* IMPORTANT FIX */
+    padding:0;
+    line-height:1;
+    font-size:0;
+}
 .back-btn:hover{
     background:var(--primary-container);
     color:var(--primary);
