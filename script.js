@@ -318,7 +318,9 @@ function selectParking(id, name, price) {
     location,
     date,
     startTime,
-    duration
+    duration,
+    vehicleType: "",
+    vehicleNumber: ""
 };
 
     document.getElementById("detailsContent").innerHTML = `
@@ -335,12 +337,38 @@ function selectParking(id, name, price) {
 function confirmBooking() {
 
     const user = firebase.auth().currentUser;
+    const vehicleType =
+    document.getElementById("vehicleType").value;
 
+const vehicleNumber =
+    document.getElementById("vehicleNumber")
+    .value
+    .trim()
+    .toUpperCase();
+
+if (!vehicleType) {
+    alert("Please select vehicle type");
+    return;
+}
+
+if (!vehicleNumber) {
+    alert("Please enter vehicle number");
+    return;
+}
+
+const vehicleRegex =
+/^[A-Z]{2}[0-9]{1,2}[A-Z]{1,2}[0-9]{1,4}$/;
+
+if (!vehicleRegex.test(vehicleNumber.replace(/[- ]/g, ""))) {
+    alert("Enter a valid vehicle number");
+    return;
+}
     if (!user) {
         alert("Please login first");
         return;
     }
-
+selectedParking.vehicleType = vehicleType;
+selectedParking.vehicleNumber = vehicleNumber;
     const start = selectedParking.startTime;
 
         if (!start) {
@@ -369,6 +397,8 @@ function confirmBooking() {
             userEmail: user.email,
             area: selectedParking.area,
             location: selectedParking.location,
+            vehicleType: vehicleType,
+            vehicleNumber: vehicleNumber,
             date: selectedParking.date,
             startTime: selectedParking.startTime,
             endTime: endTime,
@@ -381,6 +411,8 @@ function confirmBooking() {
 
             document.getElementById("confirmationContent").innerHTML = `
                 <strong>Parking Area:</strong> ${selectedParking.area}<br>
+                <strong>Vehicle Type:</strong> ${vehicleType}<br>
+                <strong>Vehicle Number:</strong> ${vehicleNumber}<br>
                 <strong>Location:</strong> ${selectedParking.location}<br>
                 <strong>Date:</strong> ${selectedParking.date}<br>
                 <strong>Start Time:</strong> ${selectedParking.startTime}<br>
@@ -446,7 +478,18 @@ function loadOrders() {
             const bookingDateTime = new Date(`${b.date}T${b.startTime}`);
 
             const html = `
-                <div class="card" onclick="showOrderDetails('${doc.id}', '${b.area}', '${b.location}', '${b.date}', '${b.startTime}', '${b.endTime}', '${b.duration}', '${b.price}')">
+                <div class="card" onclick="showOrderDetails(
+    '${doc.id}',
+    '${b.area}',
+    '${b.location}',
+    '${b.vehicleType || ""}',
+    '${b.vehicleNumber || ""}',
+    '${b.date}',
+    '${b.startTime}',
+    '${b.endTime}',
+    '${b.duration}',
+    '${b.price}'
+)"
                     <h3>${b.area}</h3>
                     <p>${b.location}</p>
                     <p>${b.date} - ${b.startTime}</p>
@@ -471,12 +514,25 @@ function loadOrders() {
     });
 }
 
-function showOrderDetails(id, area, location, date, startTime, endTime, duration, price) {
+function showOrderDetails(
+    id,
+    area,
+    location,
+    vehicleType,
+    vehicleNumber,
+    date,
+    startTime,
+    endTime,
+    duration,
+    price
+) {
 
     const html = `
         <h3>${area}</h3>
         <p><strong>Location:</strong> ${location}</p>
         <p><strong>Date:</strong> ${date}</p>
+        <p><strong>Vehicle Type:</strong> ${vehicleType}</p>
+        <p><strong>Vehicle Number:</strong> ${vehicleNumber}</p>
         <p><strong>Start Time:</strong> ${startTime}</p>
         <p><strong>End Time:</strong> ${endTime}</p>
         <p><strong>Duration:</strong> ${duration} hours</p>
