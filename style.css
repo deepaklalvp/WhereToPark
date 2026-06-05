@@ -452,7 +452,8 @@ button:active{
 }
 
 .logo {
-    width: 180px;
+    width: 100%;
+    max-width: 550px; /* same as .container */
     height: auto;
     display: block;
     margin: 0 auto 20px;
