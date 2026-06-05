@@ -533,19 +533,19 @@ function loadOrders() {
             // 🔥 combine date + time into real JS Date
             const bookingDateTime = new Date(`${b.date}T${b.startTime}`);
 
-            const html = `
-                <div class="card" onclick="showOrderDetails(
-    '${doc.id}',
-    '${b.area}',
-    '${b.location}',
-    '${b.vehicleType || ""}',
-    '${b.vehicleNumber || ""}',
-    '${b.date}',
-    '${b.startTime}',
-    '${b.endTime}',
-    '${b.duration}',
-    '${b.price}'
-)"
+           const html = `
+    <div class="card" onclick="showOrderDetails(
+        '${doc.id}',
+        '${b.area}',
+        '${b.location}',
+        '${b.vehicleType || ""}',
+        '${b.vehicleNumber || ""}',
+        '${b.date}',
+        '${b.startTime}',
+        '${b.endTime}',
+        '${b.duration}',
+        '${b.price}'
+    )">
                     <h3>${b.area}</h3>
                     <p>${b.location}</p>
                     <p>${b.date} - ${b.startTime}</p>
