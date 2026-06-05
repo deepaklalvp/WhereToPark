@@ -421,9 +421,36 @@ selectedParking.vehicleNumber = vehicleNumber;
         <strong>Price:</strong> ${selectedParking.price}
     `;
 
-    // Clear fields for next booking
-    document.getElementById("vehicleType").value = "";
-    document.getElementById("vehicleNumber").value = "";
+    // Clear vehicle fields
+document.getElementById("vehicleType").value = "";
+document.getElementById("vehicleNumber").value = "";
+
+// Reset search form
+document.getElementById("location").selectedIndex = 0;
+
+// Reset date to today
+const today = new Date();
+const yyyy = today.getFullYear();
+const mm = String(today.getMonth() + 1).padStart(2, "0");
+const dd = String(today.getDate()).padStart(2, "0");
+
+document.getElementById("date").value =
+    `${yyyy}-${mm}-${dd}`;
+
+// Reset duration
+document.getElementById("duration").value = "1";
+
+// Regenerate time slots
+generateTimeSlots();
+
+// Clear end time preview
+document.getElementById("endTimePreview").value = "";
+
+// Clear parking results
+document.getElementById("parkingList").innerHTML = "";
+
+// Reset selected parking object
+selectedParking = {};
 
     showPage("confirmationPage");
 
