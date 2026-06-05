@@ -48,6 +48,28 @@ function login() {
     });
 }   // <-- THIS closes login()
 
+function forgotPassword() {
+
+    const email =
+        document.getElementById("email").value.trim();
+
+    if (!email) {
+        alert("Enter your email address first");
+        return;
+    }
+
+    firebase.auth()
+        .sendPasswordResetEmail(email)
+        .then(() => {
+            alert(
+                "Password reset link sent to your email."
+            );
+        })
+        .catch((error) => {
+            alert(error.message);
+        });
+}
+
 function register() {
 
     const name = document.getElementById("regName").value.trim();
