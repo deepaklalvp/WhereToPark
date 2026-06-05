@@ -12,34 +12,41 @@
 </head>
 <body>
 
-    <!-- LOGIN PAGE -->
-    <section id="loginPage" class="page">
-        <div class="container">
-            <div class="card">
-                <h2>Login</h2>
+  <!-- LOGIN PAGE -->
+<section id="loginPage" class="page">
+    <div class="container">
+        <div class="card">
+            <h2>Login</h2>
 
-              <input type="email" id="email" placeholder="Email">
-              <input type="password" id="password" placeholder="Password">
-                    <p style="text-align:right;margin-top:5px;">
-    <a href="#" onclick="forgotPassword()">
-        Forgot Password?
-    </a>
-</p>
+            <!-- Email -->
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="Enter your email">
 
-              <p id="loginError" class="error-msg"></p>
+            <!-- Password -->
+            <label for="password">Password</label>
+            <input type="password" id="password" placeholder="Enter your password">
 
-                <button onclick="login()">Login</button>
+            <!-- Forgot password (LEFT aligned) -->
+            <p style="text-align:left;margin-top:5px;">
+                <a href="#" onclick="forgotPassword()">
+                    Forgot Password?
+                </a>
+            </p>
 
-                    <p style="margin-top:15px;text-align:center;">
-                     Don't have an account?
-                    <a href="#" onclick="showPage('registerPage')">
+            <p id="loginError" class="error-msg"></p>
+
+            <button onclick="login()">Login</button>
+
+            <p style="margin-top:15px;text-align:center;">
+                Don't have an account?
+                <a href="#" onclick="showPage('registerPage')">
                     Register
-                    </a>
-                    </p>
+                </a>
+            </p>
 
-            </div>
         </div>
-    </section>
+    </div>
+</section>
 
        <!-- REGISTER PAGE -->
 <section id="registerPage" class="page">
