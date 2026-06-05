@@ -409,27 +409,28 @@ selectedParking.vehicleNumber = vehicleNumber;
         })
         .then(() => {
 
-            document.getElementById("confirmationContent").innerHTML = `
-                <strong>Parking Area:</strong> ${selectedParking.area}<br>
-                <strong>Vehicle Type:</strong> ${vehicleType}<br>
-                <strong>Vehicle Number:</strong> ${vehicleNumber}<br>
-                <strong>Location:</strong> ${selectedParking.location}<br>
-                <strong>Date:</strong> ${selectedParking.date}<br>
-                <strong>Start Time:</strong> ${selectedParking.startTime}<br>
-                <strong>End Time:</strong> ${endTime}<br>
-                <strong>Duration:</strong> ${selectedParking.duration} hours<br>
-                <strong>Price:</strong> ${selectedParking.price}
-            `;
+    document.getElementById("confirmationContent").innerHTML = `
+        <strong>Parking Area:</strong> ${selectedParking.area}<br>
+        <strong>Vehicle Type:</strong> ${vehicleType}<br>
+        <strong>Vehicle Number:</strong> ${vehicleNumber}<br>
+        <strong>Location:</strong> ${selectedParking.location}<br>
+        <strong>Date:</strong> ${selectedParking.date}<br>
+        <strong>Start Time:</strong> ${selectedParking.startTime}<br>
+        <strong>End Time:</strong> ${endTime}<br>
+        <strong>Duration:</strong> ${selectedParking.duration} hours<br>
+        <strong>Price:</strong> ${selectedParking.price}
+    `;
 
-            showPage("confirmationPage");
+    // Clear fields for next booking
+    document.getElementById("vehicleType").value = "";
+    document.getElementById("vehicleNumber").value = "";
 
-            setTimeout(() => {
-                loadOrders();
-            }, 300);
-        })
-        .catch((error) => {
-            alert(error.message);
-        });
+    showPage("confirmationPage");
+
+    setTimeout(() => {
+        loadOrders();
+    }, 300);
+})
 }
 
 let currentTab = "upcoming";
