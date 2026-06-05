@@ -633,3 +633,12 @@ button:active{
 .pay-box.active{
     display:block;
 }
+
+.vehicle-box {
+    margin-bottom: 20px;
+}
+
+.vehicle-box h3 {
+    margin-bottom: 15px;
+    color: #333;
+}
