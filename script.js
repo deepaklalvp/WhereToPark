@@ -144,6 +144,11 @@ firebase.auth().onAuthStateChanged((user) => {
 
                 document.getElementById("profileName")
                     .textContent = data.name || "";
+                const initial = (data.name || user.email || "U")
+                    .charAt(0)
+                    .toUpperCase();
+
+                document.getElementById("profileAvatar").textContent = initial;
 
                 document.getElementById("profilePhone")
                     .textContent = data.phone || "";
@@ -378,10 +383,11 @@ if (!vehicleNumber) {
     return;
 }
 
-const vehicleRegex =
-/^[A-Z]{2}[0-9]{1,2}[A-Z]{1,2}[0-9]{1,4}$/;
+const vehicleRegex = /^[A-Z]{2}[0-9]{1,2}[A-Z]{1,2}[0-9]{1,4}$/;
 
-if (!vehicleRegex.test(vehicleNumber.replace(/[- ]/g, ""))) {
+const cleanNumber = vehicleNumber.replace(/[- ]/g, "");
+
+if (!vehicleRegex.test(cleanNumber)) {
     alert("Enter a valid vehicle number");
     return;
 }
@@ -742,7 +748,9 @@ function updateProfile() {
         alert("Please fill all fields");
         return;
     }
+const initial = name.charAt(0).toUpperCase();
 
+document.getElementById("profileAvatar").textContent = initial;
     db.collection("users")
         .doc(user.uid)
         .update({
