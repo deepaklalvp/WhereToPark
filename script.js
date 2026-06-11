@@ -518,7 +518,6 @@ function loadOrders() {
 
     const query = db.collection("bookings")
     .where("userEmail", "==", user.email)
-    .orderBy("createdAt", "desc");
 
     unsubscribeOrders = query.onSnapshot((snapshot) => {
 
